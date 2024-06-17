@@ -14,7 +14,7 @@ function App() {
 				</div>
 			</header>
 			<main>
-				<p>In the meantime, you can stalk me</p>
+				<p>In the meantime, you can stalk me here ↓</p>
 				<div className="socials">
 					<a
 						href="https://www.linkedin.com/in/maesela/"
