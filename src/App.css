@@ -3,14 +3,8 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 15vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -39,8 +33,25 @@
 }
 
 .centered {
+  display: flex-column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  
+  .full-height {
+    min-height: 100vh;
+  }
+  
+  .socials {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-}
+  align-content: center;
+  }
+  
+  .social-icon {
+    margin: 0 0.5em;
+    width: 2em;
+    height: 2em;
+  }
