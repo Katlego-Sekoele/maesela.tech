@@ -1,0 +1,33 @@
+#main-container {
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    height: 100%;
+}
+
+#main-container>*:first-child {
+    width: 35%;
+    border-right: 1px solid var(--border-color);
+}
+
+#main-container>*:nth-child(2) {
+    width: 65%;
+}
+
+@media screen and (max-width: 768px) {
+    #main-container {
+        flex-direction: column;
+    }
+
+    #main-container>*:first-child {
+        flex-basis: 100%;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    #main-container>*:nth-child(2) {
+        flex-basis: 100%;
+        width: 100%;
+    }
+}
