@@ -4,6 +4,7 @@ import Construction from "./pages/construction";
 import "./App.css";
 import Header from "./components/header";
 import ScrollableContainer from "./components/scrollable-container";
+import Shoutout from "./pages/shoutout";
 
 const App = () => {
 	return (
@@ -11,7 +12,15 @@ const App = () => {
 			<Header />
 			<div className="page-content">
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Home />} index />
+					<Route
+						path="/shoutout"
+						element={
+							<ScrollableContainer>
+								<Shoutout />
+							</ScrollableContainer>
+						}
+					/>
 					<Route
 						path="*"
 						element={

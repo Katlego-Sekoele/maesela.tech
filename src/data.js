@@ -215,8 +215,10 @@ export const ShortBio = {
 	},
 };
 
-const socials = {
-	linkedin: "",
-	github: "",
-	email: "",
+export const Socials = {
+	linkedin: "https://www.linkedin.com/in/maesela/",
+	github: "https://github.com/katlego-sekoele",
+	email: "mailto:sekoelekatlego@gmail.com",
+	spotify: "https://open.spotify.com/user/21zhsmy8v3xkx5o73patd9r0i",
+	instagram: "https://www.instagram.com/katlego.sekoele/",
 };

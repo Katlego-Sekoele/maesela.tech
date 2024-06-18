@@ -123,6 +123,9 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: inherit;
+}
 ul {
   list-style-type: "→ ";
 }

@@ -3,7 +3,7 @@ import "./styles.css";
 import ScrollableContainer from "../../components/scrollable-container";
 import Construction from "../construction";
 import Experience from "../../components/experience";
-import { Educations, Experiences, ShortBio } from "../../data";
+import { Educations, Experiences, ShortBio, Socials } from "../../data";
 import Education from "../../components/education";
 
 function Home() {
@@ -31,6 +31,43 @@ function Home() {
 						{ShortBio.current.position} @ {ShortBio.current.company}
 					</i>
 					.
+				</p>
+				<p className="text-links">
+					<a
+						href={Socials.github}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						GitHub
+					</a>
+					<a
+						href={Socials.linkedin}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						LinkedIn
+					</a>
+					<a
+						href={Socials.email}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Email
+					</a>
+					<a
+						href={Socials.spotify}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Spotify
+					</a>
+					<a
+						href={Socials.instagram}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Instagram
+					</a>
 				</p>
 
 				<h2 className="section-title">Experience</h2>
