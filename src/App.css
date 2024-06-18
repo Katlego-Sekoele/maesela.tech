@@ -5,12 +5,15 @@
     height: 100vh;
 }
 
+.App-logo {
+  height: 30vh;
+}
 .page-content {
   /* 
     Calculate the height of the page content by subtracting the height of the header
     headerHeight = 1.5rem + var(--padding-large) + var(--padding-medium) + 1rem
   */
-  height: calc(100vh - 1.5rem - var(--padding-large) - var(--padding-medium) - 1rem);
+  height: calc(100vh - 1.5rem - var(--padding-large) - var(--padding-medium) - 2rem);
 }
 
 @media screen and (max-width: 768px) {
@@ -19,7 +22,7 @@
       Calculate the height of the page content by subtracting the height of the header
       headerHeight = 1.5rem + var(--padding-large) + var(--padding-medium) + 3rem
     */
-    height: calc(100vh - 1.5rem - var(--padding-large) - var(--padding-medium) - 3rem);
+    height: calc(100vh - 1.5rem - var(--padding-large) - var(--padding-medium) - 4rem);
   }
 }
 

@@ -1,5 +1,5 @@
 #logo-image {
-    height: 1em;
+    height: 2em;
     margin: 0 0.2em;
 }
 
@@ -8,12 +8,15 @@
     flex-wrap: wrap;
     align-items: center;
     font-size: 1.5em;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
     text-decoration: none;
     color: var(--foreground);
 }
 
+#name:hover {
+    color: var(--foreground) !important;
+}
 #header {
     position: sticky;
     display: flex;
@@ -26,12 +29,7 @@
 }
 
 #navigation a {
-    text-decoration: none;
     color: var(--muted);
     margin: 0 var(--spacing-small) 0 0;
     font-size: 1.2em;
-}
-
-#navigation a:hover {
-    color: var(--secondary);
 }

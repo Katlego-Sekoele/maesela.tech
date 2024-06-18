@@ -1,4 +1,5 @@
 import logo from "../../images/logo.png";
+import workImage from "../../images/error.png";
 import "../../App.css";
 import { ReactComponent as Mail } from "../../icons/gmail.svg";
 import { ReactComponent as LinkedIn } from "../../icons/linkedin.svg";
@@ -9,7 +10,7 @@ function Construction() {
 		<div className="App full-height centered stacked">
 			<header>
 				<div>
-					<img src={logo} className="App-logo" alt="logo" />
+					<img src={workImage} className="App-logo" alt="logo" />
 					<h1>Under Construction 🚧</h1>
 				</div>
 			</header>

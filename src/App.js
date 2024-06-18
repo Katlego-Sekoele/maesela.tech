@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import Construction from "./pages/construction";
 import "./App.css";
 import Header from "./components/header";
+import ScrollableContainer from "./components/scrollable-container";
 
 const App = () => {
 	return (
@@ -11,7 +12,14 @@ const App = () => {
 			<div className="page-content">
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="*" element={<Construction />} />
+					<Route
+						path="*"
+						element={
+							<ScrollableContainer>
+								<Construction />
+							</ScrollableContainer>
+						}
+					/>
 				</Routes>
 			</div>
 		</div>

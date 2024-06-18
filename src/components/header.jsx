@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import Logo from "../images/logo.png";
+import "../index.css";
 import "./header.css";
 
 const Header = () => {
 	return (
 		<header id="header">
 			<Link to="/" id="name">
-				Maesela
+				Maesela Sekoele
 				{
 					<img
 						id="logo-image"
@@ -14,7 +15,6 @@ const Header = () => {
 						alt="illustration of Maesela's face"
 					/>
 				}
-				Sekoele
 			</Link>
 			<div id="navigation">
 				<Link to="/about">About</Link>
