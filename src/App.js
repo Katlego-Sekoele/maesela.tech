@@ -5,6 +5,7 @@ import "./App.css";
 import Header from "./components/header";
 import ScrollableContainer from "./components/scrollable-container";
 import Shoutout from "./pages/shoutout";
+import About from "./pages/about";
 
 const App = () => {
 	return (
@@ -18,6 +19,14 @@ const App = () => {
 						element={
 							<ScrollableContainer>
 								<Shoutout />
+							</ScrollableContainer>
+						}
+					/>
+					<Route
+						path="/about"
+						element={
+							<ScrollableContainer>
+								<About />
 							</ScrollableContainer>
 						}
 					/>

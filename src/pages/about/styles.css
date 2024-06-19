@@ -1,0 +1,28 @@
+#photo {
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    padding: var(--padding-medium);
+}
+
+#main-container {
+    display: flex;
+}
+
+#content {
+    padding: var(--padding-medium);
+}
+
+@media screen and (max-width: 768px) {
+    #main-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #photo {
+        max-height: 50vh;
+        object-position: 0% 10%;
+        max-width: 100%;
+    }
+}

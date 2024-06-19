@@ -207,7 +207,7 @@ export const Educations = [
 ];
 
 export const ShortBio = {
-	bio: "Hi! 👋🏾 I'm Maesela. I am pursuing a career in software development 💻. I am passionate about the intersection of information, people, processes, and technology and how they can be leveraged to optimise businesses and bring the most value to users.",
+	bio: "Hi! 👋🏾 I'm Maesela. I am pursuing a career in software development 💻. I am passionate about the intersection of information, people, processes, and technology and how they can be leveraged to optimise businesses and bring value to users.",
 	current: {
 		activity: "studying",
 		position: "Bachelor of Commerce Honours in Information Systems",
@@ -221,4 +221,15 @@ export const Socials = {
 	email: "mailto:sekoelekatlego@gmail.com",
 	spotify: "https://open.spotify.com/user/21zhsmy8v3xkx5o73patd9r0i",
 	instagram: "https://www.instagram.com/katlego.sekoele/",
+};
+
+export const About = {
+	greeting: "Hey there! 👋🏾 I'm Maesela.",
+	tldr: "I like to build things with code focusing on how technology, people, and processes intersect.",
+	paragraphs: [
+		"I am passionate about using my knowledge of computer science and business computing to make a positive impact. With a strong affinity for learning and a passion for technology, I am a firm believer in the power of continuous learning and improvement. I follow the CL/CI (continuous learning and continuous improvement) framework (totally made up), which guides me in my pursuit of personal and professional growth.",
+		"In addition to my passion for technology and education, I am also interested in gaming, software development, and business. I am always looking for ways to combine my interests and skills to address niche problems and create innovative solutions.",
+		"Throughout my academic career, I have proven myself to be a strong academic achiever and a self-motivated student. I am proud to have been on the Dean's Merit List for the entire duration of my undergraduate degree. I am not afraid to ask questions, seek out new challenges, and learn from my peers and those more knowledgeable than I am.",
+		"I am excited to see where my studies will take me and to continue pursuing my passion for computer science.",
+	],
 };
