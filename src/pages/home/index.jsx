@@ -3,7 +3,7 @@ import "./styles.css";
 import ScrollableContainer from "../../components/scrollable-container";
 import Construction from "../construction";
 import Experience from "../../components/experience";
-import { Educations, Experiences, ShortBio, Socials } from "../../data";
+import { Educations, Experiences, Projects, ShortBio, Socials } from "../../data";
 import Education from "../../components/education";
 
 function Home() {
@@ -20,6 +20,8 @@ function Home() {
 		if (b.endDate === undefined) return 1;
 		return b.endDate - a.endDate;
 	});
+
+	const projectNames = Projects.map((project, _) => project.name);
 
 	return (
 		<main id="main-container">
@@ -110,7 +112,24 @@ function Home() {
 				</div>
 			</ScrollableContainer>
 			<ScrollableContainer className="scrollable-container">
-				<Construction />
+
+				<div>
+					<h2 className="section-title">Projects</h2>
+					<div className="desktop"
+						style={{
+							display: 'grid',
+							gridTemplateColumns: "repeat(3, auto)",
+							gridTemplateRows: `repeat(${Math.ceil(projectNames.length / 2)},auto)`,
+							gridAutoFlow: 'row',
+							gridGap: '0 1em'
+						}}
+					>
+						{projectNames.map((name, index) => (
+							<span key={index}>{name}</span>
+						))}
+					</div>
+					<Construction />
+				</div>
 			</ScrollableContainer>
 		</main>
 	);

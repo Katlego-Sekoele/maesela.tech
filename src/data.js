@@ -233,3 +233,86 @@ export const About = {
 		"I am excited to see where my studies will take me and to continue pursuing my passion for computer science.",
 	],
 };
+
+class Project {
+	constructor({
+		name, 
+		descriptionParagraphs,
+		links,
+		primaryLink,
+		images,
+	}){
+		this.name = name;
+		this.descriptionParagraphs = descriptionParagraphs;
+		this.links = links;
+		this.primaryLink = primaryLink;
+		this.images = images;
+	}
+
+}
+
+class ProjectLink {
+	constructor({
+		name,
+		link,
+	}){
+		this.name = name;
+		this.link = link;
+	}
+}
+
+class ProjectImage {
+	constructor({
+		src,
+		alt,
+	}){
+		this.src = src;
+		this.alt = alt;
+	}
+}
+
+export const Projects = [
+	new Project({
+		name: "Maesela.tech",
+		descriptionParagraphs: [
+			"A personal portfolio website showcasing my projects, skills, and experiences.",
+			"Built with React, and deployed on Vercel. Nothing too fancy but I like it",
+		],
+		links: [
+			new ProjectLink({
+				name: "GitHub Repository",
+				link: "https://github.com/Katlego-Sekoele/maesela.tech",
+			}),
+			new ProjectLink({
+				name: "Hosted",
+				link: "https://www.maesela.tech"
+			})
+		],
+		primaryLink: "https://www.maesela.tech",
+		images: [
+			new ProjectImage({
+				src: "portfolio.png",
+				alt: "Screenshot of the portfolio website",
+			}),
+		],
+	}),
+	new Project({
+		name: "Gigs",
+		descriptionParagraphs: [
+			"This is a web application built with Next.js that provides a platform for students to buy and sell services from each other. The website is largely unfinished and was just used as a playground to test and learn React.js and Next.js. The website is publicly hosted on this vercel."
+		],
+		links: [
+			new ProjectLink({
+				name: "GitHub",
+				link: "maesela.tech",
+			}),
+		],
+		primaryLink: "maesela.tech",
+		images: [
+			new ProjectImage({
+				src: "portfolio.png",
+				alt: "Screenshot of the portfolio website",
+			}),
+		],
+	})
+]
