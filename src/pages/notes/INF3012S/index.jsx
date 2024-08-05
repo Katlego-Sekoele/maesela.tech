@@ -48,7 +48,7 @@ const notes = [
     },
     {
         title: 'Enterprise Resource Planning Business Case',
-        pageId: '6ac37440a27f429d8e3eae279105a634'
+        pageId: '4902732bbf31476e88cbd3f80301a05d'
     },
     {
         title: 'Process: Sales (Order-to-cash)',
@@ -115,6 +115,23 @@ function INF3012_Notes() {
                                     marginBottom: "0.8em",
                                 }}
                             >Notes for INF3012S</h1>
+                            <p>
+                                These notes are meant to be a supplement to the course material. They are not a replacement for the course material. If you have any questions, please ask your lecturer.
+                            </p>
+                            <p
+                                style={{
+                                    color: "red",
+                                }}
+                            >
+                                There may be some notes that are flat out wrong. If you find any, please let me know so I can correct them.
+                            </p>
+                            <p
+                                style={{
+                                    marginBottom: "0.5em",
+                                }}
+                            >
+                                All notes marked with the "🤖" symbol have been generated using generative AI.
+                            </p>
                             <ul>
                                 {notes.map((note, index) => (
                                     <li key={index}
