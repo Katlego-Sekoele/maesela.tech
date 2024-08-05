@@ -6,6 +6,8 @@ import Header from "./components/header";
 import ScrollableContainer from "./components/scrollable-container";
 import Shoutout from "./pages/shoutout";
 import About from "./pages/about";
+import INF3012_Notes from "./pages/notes/INF3012S";
+import Private from "./pages/private";
 
 const App = () => {
 	return (
@@ -27,6 +29,22 @@ const App = () => {
 						element={
 							<ScrollableContainer>
 								<About />
+							</ScrollableContainer>
+						}
+					/>
+					<Route
+						path="/INF3012S/*"
+						element={
+							<ScrollableContainer>
+								<INF3012_Notes />
+							</ScrollableContainer>
+						}
+					/>
+					<Route
+						path="/private/*"
+						element={
+							<ScrollableContainer>
+								<Private />
 							</ScrollableContainer>
 						}
 					/>
