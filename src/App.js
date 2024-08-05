@@ -8,6 +8,7 @@ import Shoutout from "./pages/shoutout";
 import About from "./pages/about";
 import INF3012_Notes from "./pages/notes/INF3012S";
 import Private from "./pages/private";
+import ETC from "./pages/etc";
 
 const App = () => {
 	return (
@@ -37,6 +38,14 @@ const App = () => {
 						element={
 							<ScrollableContainer>
 								<INF3012_Notes />
+							</ScrollableContainer>
+						}
+					/>
+					<Route
+						path="/etc"
+						element={
+							<ScrollableContainer>
+								<ETC />
 							</ScrollableContainer>
 						}
 					/>

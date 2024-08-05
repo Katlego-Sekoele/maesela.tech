@@ -109,6 +109,13 @@ function INF3012_Notes() {
                 <Route path="/" element={
                     <ScrollableContainer>
                         <div>
+                            <Link to="/etc" style={{
+                                display: "block",
+                                marginBottom: "1em",
+                                color: "blue",
+                                textDecoration: "underline",
+                                margin: "1em 0"
+                            }}>← Back</Link>
                             <h1
                                 style={{
                                     marginTop: "0.8em",
