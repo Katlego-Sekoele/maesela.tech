@@ -7,9 +7,9 @@ import ScrollableContainer from "./components/scrollable-container";
 import Shoutout from "./pages/shoutout";
 import About from "./pages/about";
 import INF3012_Notes from "./pages/notes/INF3012S";
-import Private from "./pages/private";
 import ETC from "./pages/etc";
-import Tinkr from "./pages/redirect/tinkr";
+import { useEffect } from "react";
+
 const App = () => {
 	return (
 		<div className="App">
@@ -50,14 +50,6 @@ const App = () => {
 						}
 					/>
 					<Route
-						path="/private/*"
-						element={
-							<ScrollableContainer>
-								<Private />
-							</ScrollableContainer>
-						}
-					/>
-					<Route
 						path="redirect/tinkr"
 						element={
 							<Tinkr />
@@ -76,5 +68,13 @@ const App = () => {
 		</div>
 	);
 };
+
+function Tinkr() {
+	useEffect(() => {
+		window.location.href = 'https://linktr.ee/uct_tinkr';
+	}, []);
+
+	return null;
+}
 
 export default App;
