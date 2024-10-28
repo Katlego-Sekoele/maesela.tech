@@ -9,7 +9,7 @@ import About from "./pages/about";
 import INF3012_Notes from "./pages/notes/INF3012S";
 import Private from "./pages/private";
 import ETC from "./pages/etc";
-
+import Tinkr from "./pages/redirect/tinkr";
 const App = () => {
 	return (
 		<div className="App">
@@ -55,6 +55,12 @@ const App = () => {
 							<ScrollableContainer>
 								<Private />
 							</ScrollableContainer>
+						}
+					/>
+					<Route
+						path="redirect/tinkr"
+						element={
+							<Tinkr />
 						}
 					/>
 					<Route
