@@ -1,8 +1,10 @@
 :root {
-    --background: white;
+    color-scheme: light;
+    
+    --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
-    --muted: gray;
+    --muted: 215 16% 47%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --popover: 0 0% 100%;
@@ -11,15 +13,15 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
 
-    --border-color: black;
+    --border-color: 0 0% 0%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    --primary: black;
-    --primary-foreground: white;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: #00f;
+    --secondary: 240 100% 50%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --accent: 210 40% 96.1%;
@@ -38,39 +40,54 @@
     --spacing-small: 0.5rem;
     --spacing-medium: 1rem;
     --spacing-large: 2rem;
+
+    --transition-duration: 0.3s;
+    --transition-easing: ease;
+
+    --video-overlay-gradient-start: rgba(0, 0, 0, 1);
+    --video-overlay-gradient-mid: rgba(0, 0, 0, 0.9);
+    --video-overlay-gradient-end: rgba(0, 0, 0, 0);
+    --video-overlay-text-color: 0 0% 100%;
+    --video-overlay-padding-top: 2rem;
+    --video-overlay-padding-sides: 1rem;
+    --video-overlay-font-size: 0.9rem;
+    --video-overlay-line-height: 1.4em;
+    --video-max-width: 31.25rem;
 }
 
-.dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+[data-theme="dark"] {
+    color-scheme: dark;
+    
+    --background: 220 13% 10%;
+    --foreground: 0 0% 98%;
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
+    --muted: 220 9% 68%;
+    --muted-foreground: 220 9% 72%;
 
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 220 13% 20%;
+    --accent-foreground: 0 0% 98%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
+    --popover: 220 13% 14%;
+    --popover-foreground: 0 0% 98%;
 
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
+    --border: 220 9% 30%;
+    --input: 220 9% 30%;
 
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
+    --border-color: 0 0% 100%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
+    --card: 220 13% 14%;
+    --card-foreground: 0 0% 98%;
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 13% 14%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --secondary: 240 100% 70%;
+    --secondary-foreground: 0 0% 98%;
 
-    --ring: 216 34% 17%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --radius: 0.5rem;
+    --ring: 220 9% 30%;
 }
 @font-face {
   font-family: 'UncutSans';
@@ -101,6 +118,19 @@
   src: url('./fonts/BL/BLMelody-Bold.woff') format('woff');
   font-weight: 900;
 }
+/* Smooth transitions for theme changes */
+*,
+*::before,
+*::after {
+  transition: background-color var(--transition-duration) var(--transition-easing),
+              color var(--transition-duration) var(--transition-easing),
+              border-color var(--transition-duration) var(--transition-easing);
+}
+
+html {
+  background-color: hsl(var(--background));
+}
+
 body {
   margin: 0;
   font-family: 'BL', 'UncutSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -108,6 +138,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
 code {
@@ -116,7 +148,7 @@ code {
 }
 
 *>a:hover {
-  color: var(--secondary) !important;
+  color: hsl(var(--secondary)) !important;
 }
 
 a {
@@ -124,8 +156,9 @@ a {
 }
 
 a:visited {
-  color: inherit;
+  color: hsl(var(--primary));
 }
+
 ul {
   list-style-type: "→ ";
 }

@@ -27,8 +27,7 @@ function Shoutout() {
 					</a>
 				</div>
 				<p>
-					I am also a broke student 😔 so I used these other free cool
-					stuff ↓
+					I also used these other free cool stuff ↓
 				</p>
 				<div>
 					<a

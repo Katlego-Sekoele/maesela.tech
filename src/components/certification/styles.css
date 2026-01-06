@@ -1,0 +1,25 @@
+@import "../shared.css";
+
+.certification-container {
+	/* Container for the entire certification item */
+}
+
+.certification-header {
+	align-items: center;
+}
+
+.certification-links {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-small);
+}
+
+.certification-verify-link {
+	font-size: 0.8rem;
+	text-decoration: underline;
+}
+
+.certification-date-info {
+	text-align: right;
+}
+

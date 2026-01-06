@@ -1,0 +1,52 @@
+/* Common header pattern used across experience, education, certification, video */
+.item-header {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+/* Common link pattern for company/name links */
+.item-link {
+	font-weight: 600;
+	text-decoration: none;
+	color: hsl(var(--primary));
+	display: flex;
+	align-items: center;
+}
+
+/* Current indicator (blue dot) */
+.current-indicator {
+	font-size: 1rem;
+	margin-right: 0.2rem;
+	color: hsl(var(--secondary));
+	vertical-align: middle;
+}
+
+/* Common date/info text pattern */
+.item-date {
+	font-size: 0.8rem;
+	margin-bottom: var(--spacing-small);
+}
+
+/* Common position/subtitle pattern */
+.item-position {
+	color: hsl(var(--muted));
+}
+
+/* Common description pattern */
+.item-description {
+	margin-bottom: var(--spacing-medium);
+	line-height: 1.1em;
+}
+
+/* Common key points list pattern */
+.item-key-points {
+	padding-left: var(--spacing-medium);
+	margin-top: var(--spacing-small);
+}
+
+/* Common muted text pattern */
+.muted-text {
+	color: hsl(var(--muted));
+}
+

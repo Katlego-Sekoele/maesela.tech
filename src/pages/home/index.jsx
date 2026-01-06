@@ -3,8 +3,10 @@ import "./styles.css";
 import ScrollableContainer from "../../components/scrollable-container";
 import Construction from "../construction";
 import Experience from "../../components/experience";
-import { Educations, Experiences, Projects, ShortBio, Socials } from "../../data";
+import { Educations, Experiences, Projects, ShortBio, Socials, Certifications, Videos } from "../../data";
 import Education from "../../components/education";
+import Certification from "../../components/certification";
+import Video from "../../components/video";
 
 function Home() {
 	const sortedExperiences = Experiences.toSorted((a, b) => {
@@ -21,6 +23,14 @@ function Home() {
 		return b.endDate - a.endDate;
 	});
 
+	const sortedCertifications = Certifications.toSorted((a, b) => {
+		return b.acquiredDate - a.acquiredDate;
+	});
+
+	const sortedVideos = Videos.toSorted((a, b) => {
+		return b.publishedDate - a.publishedDate;
+	});
+
 	const projectNames = Projects.map((project, _) => project.name);
 
 	return (
@@ -34,6 +44,7 @@ function Home() {
 					</i>
 					.
 				</p>
+				<p>My current obsessions are {ShortBio.current.interests.slice(0, -1).join(", ")} and {ShortBio.current.interests[ShortBio.current.interests.length - 1]}.</p>
 				<p className="text-links">
 					<a
 						href={Socials.github}
@@ -112,8 +123,38 @@ function Home() {
 				</div>
 			</ScrollableContainer>
 			<ScrollableContainer className="scrollable-container">
-
-				<div>
+				<h2 className="section-title">Certifications</h2>
+				<div className="section">
+					{sortedCertifications.map((certification, index) => {
+						return certification.shown ? (
+							<Certification
+								key={index}
+								name={certification.name}
+								detailsLink={certification.detailsLink}
+								verificationLink={certification.verificationLink}
+								description={certification.description}
+								acquiredDate={certification.acquiredDate}
+								expiryDate={certification.expiryDate}
+							/>
+						) : null;
+					})}
+				</div>
+				<h2 className="section-title">Videos</h2>
+				<div className="section">
+					{sortedVideos.map((video, index) => {
+						return video.shown ? (
+							<Video
+								key={index}
+								title={video.title}
+								link={video.link}
+								description={video.description}
+								publishedDate={video.publishedDate}
+								thumbnail={video.thumbnail}
+							/>
+						) : null;
+					})}
+				</div>
+				{/* <div>
 					<h2 className="section-title">Projects</h2>
 					<div className="desktop"
 						style={{
@@ -129,7 +170,7 @@ function Home() {
 						))}
 					</div>
 					<Construction />
-				</div>
+				</div> */}
 			</ScrollableContainer>
 		</main>
 	);

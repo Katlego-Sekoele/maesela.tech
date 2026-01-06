@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import "./scrollable-container.css";
+import "./styles.css";
 
 const ScrollableContainer = ({
 	children,
@@ -30,3 +30,4 @@ ScrollableContainer.propTypes = {
 };
 
 export default ScrollableContainer;
+

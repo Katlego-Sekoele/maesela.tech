@@ -115,7 +115,7 @@ export const Experiences = [
 		company: "BBD Software",
 		position: "Bursar",
 		startDate: new Date("2021-03-01"),
-		endDate: undefined,
+		endDate: new Date("2024-10-31"),
 		shown: true,
 		description:
 			"Bursary recipient since 2021. Opportunities to engage in vacation work and mentorship. Notably learnt:",
@@ -125,22 +125,40 @@ export const Experiences = [
 			"Technical writing / Agile / Git",
 		],
 		companyLink: "https://www.bbdsoftware.com/",
-		current: true,
+		current: false,
 	}),
 	new Experience({
 		company: "Nubee",
 		position: "Software Developer",
 		startDate: new Date("2024-03-01"),
-		endDate: undefined,
+		endDate: new Date("2024-05-01"),
 		shown: true,
 		description:
-			"Currently working on a driving school web app. Technologies & skills:",
+			"Worked on a driving school web app. Technologies & skills:",
 		keyPoints: [
 			"React / Node.js / Express / PostgreSQL",
 			"Google Cloud Platform",
 			"Docker / CI/CD",
 		],
 		companyLink: "https://www.nubee.co.za/",
+		current: false,
+	}),
+	new Experience({
+		company: "BBD Software",
+		position: "Junior Software Engineer",
+		startDate: new Date("2025-01-13"),
+		endDate: undefined,
+		shown: true,
+		description:
+			"Currently employed as a Software Engineer working on internal human resources software focusing annual performance reviews. Technologies & tooling:",
+		keyPoints: [
+			"Angular / TypeScript / Angular Material",
+			"Node.js / Express / Microsoft SQL Server",
+			"Docker / NX Monorepo",
+			"Azure / GitLab",
+			"Cursor"
+		],
+		companyLink: "https://www.bbdsoftware.com/",
 		current: true,
 	}),
 ];
@@ -191,27 +209,33 @@ export const Educations = [
 		company: "University of Cape Town",
 		position: "Bachelor of Commerce Honours in Information Systems",
 		startDate: new Date("2024-01-28"),
-		endDate: undefined,
-		description: "Current focuses:",
+		endDate: new Date("2024-10-31"),
+		description: "Major focuses:",
 		shown: true,
 		companyLink: "https://www.uct.ac.za/",
-		current: true,
+		current: false,
 		keyPoints: [
 			"Cybersecurity, Privacy, and Ethics",
 			"Sentiment Analysis of Financial News",
 			"Personalisation Engine for an e-commerce and digital content cross-platform app",
+			"IT Project Management"
 		],
-		grade: null,
+		grade: 72.14,
 		graduationDate: new Date("2025-03-21"),
 	}),
 ];
 
 export const ShortBio = {
-	bio: "Hi! 👋🏾 I'm Maesela. I am pursuing a career in software development 💻. I am passionate about the intersection of information, people, processes, and technology and how they can be leveraged to optimise businesses and bring value to users.",
+	bio: "Hi! 👋🏾 I'm Maesela. I am pursuing a career in software engineering 💻. I am passionate about the intersection of information, people, processes, and technology and how they can be leveraged to optimise businesses and bring value to users.",
 	current: {
-		activity: "studying",
-		position: "Bachelor of Commerce Honours in Information Systems",
-		company: "the University of Cape Town",
+		activity: "working as a",
+		position: "Software Engineer",
+		company: "BBD Software",
+		interests: [
+			"Agentic AI",
+			"Web development",
+			"TypeScript"
+		]
 	},
 };
 
@@ -228,11 +252,71 @@ export const About = {
 	tldr: "I like to build things with code focusing on how technology, people, and processes intersect.",
 	paragraphs: [
 		"I am passionate about using my knowledge of computer science and business computing to make a positive impact. With a strong affinity for learning and a passion for technology, I am a firm believer in the power of continuous learning and improvement. I follow the CL/CI (continuous learning and continuous improvement) framework (totally made up), which guides me in my pursuit of personal and professional growth.",
-		"In addition to my passion for technology and education, I am also interested in gaming, software development, and business. I am always looking for ways to combine my interests and skills to address niche problems and create innovative solutions.",
-		"Throughout my academic career, I have proven myself to be a strong academic achiever and a self-motivated student. I am proud to have been on the Dean's Merit List for the entire duration of my undergraduate degree. I am not afraid to ask questions, seek out new challenges, and learn from my peers and those more knowledgeable than I am.",
-		"I am excited to see where my studies will take me and to continue pursuing my passion for computer science.",
+		"In addition to my passion for technology and education, I am also interested in gaming, music festivals, and to a lesser extent, fashion.",
+		"Throughout my academic career, I have proven myself to be a strong academic achiever and a self-motivated student. I am proud to have been on the Dean's Merit List for the entire duration of my undergraduate degree and completed my honours degree with a distinction in my research project. I am not afraid to ask questions, seek out new challenges, and learn from my peers and those more knowledgeable than I am.",
+		"I am excited to see where my career will take me and to continue pursuing my passion for software engineering.",
 	],
 };
+
+class Certification {
+	constructor({
+		name,
+		detailsLink,
+		verificationLink,
+		description,
+		acquiredDate,
+		expiryDate,
+		shown = false,
+	}){
+		this.name = name;
+		this.detailsLink = detailsLink;
+		this.verificationLink = verificationLink;
+		this.description = description;
+		this.acquiredDate = acquiredDate;
+		this.expiryDate = expiryDate;
+		this.shown = shown;
+	}
+}
+
+export const Certifications = [
+	new Certification({
+		name: "AWS Developer Associate (DVA-C02)",
+		detailsLink: "https://aws.amazon.com/certification/certified-developer-associate/",
+		verificationLink: "https://www.credly.com/badges/c96ebfbf-d433-4270-a365-11d676b51ceb/linked_in_profile",
+		description: "AWS Certified Developer - Associate showcases skills and knowledge in developing, optimizing, packaging, and deploying applications, using CI/CD workflows, and identifying and resolving application issues. This certification is a good starting point on the AWS Certification journey for individuals in IT or cloud developer job roles.",
+		acquiredDate: new Date("2025-11-18"),
+		expiryDate: new Date("2028-11-18"),
+		shown: true,
+	}),
+]
+
+class Video {
+	constructor({
+		title,
+		link,
+		description,
+		publishedDate,
+		thumbnail,
+		shown = false,
+	}){
+		this.title = title;
+		this.link = link;
+		this.description = description;
+		this.publishedDate = publishedDate;
+		this.thumbnail = thumbnail;
+		this.shown = shown;
+	}
+}
+
+export const Videos = [
+	new Video({
+		title: "Tetris in a PDF?",
+		link: "https://youtu.be/0fo0-9t1558?si=aZnxgdN2YSisBTDj",
+		description: `What if a "digital piece of paper" wasn't so passive after all? In this talk, we explore how PDFs are far more powerful than most of us realise. It is powerful enough to run interactive games like Tetris. What started as a viral tweet turned into a deep dive into the internals of the PDF format: how PDFs are structured, how they support interactivity, and how JavaScript and form elements can be combined to create fully interactive experiences.`,
+		publishedDate: new Date("2025-12-22"),
+		shown: true,
+	}),
+]
 
 class Project {
 	constructor({

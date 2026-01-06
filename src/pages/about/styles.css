@@ -13,7 +13,7 @@
     padding: var(--padding-medium);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 48rem) {
     #main-container {
         flex-direction: column;
         justify-content: center;
@@ -21,7 +21,7 @@
     }
 
     #photo {
-        max-height: 50vh;
+        max-height: 50dvh;
         object-position: 0% 10%;
         max-width: 100%;
     }

@@ -9,12 +9,14 @@ import About from "./pages/about";
 import INF3012_Notes from "./pages/notes/INF3012S";
 import ETC from "./pages/etc";
 import { useEffect } from "react";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const App = () => {
 	return (
-		<div className="App">
-			<Header />
-			<div className="page-content">
+		<ThemeProvider>
+			<div className="App">
+				<Header />
+				<div className="page-content">
 				<Routes>
 					<Route path="/" element={<Home />} index />
 					<Route
@@ -33,22 +35,22 @@ const App = () => {
 							</ScrollableContainer>
 						}
 					/>
-					<Route
+					{/* <Route
 						path="/INF3012S/*"
 						element={
 							<ScrollableContainer>
 								<INF3012_Notes />
 							</ScrollableContainer>
 						}
-					/>
-					<Route
+					/> */}
+					{/* <Route
 						path="/etc"
 						element={
 							<ScrollableContainer>
 								<ETC />
 							</ScrollableContainer>
 						}
-					/>
+					/> */}
 					<Route
 						path="redirect/tinkr"
 						element={
@@ -64,8 +66,9 @@ const App = () => {
 						}
 					/>
 				</Routes>
+				</div>
 			</div>
-		</div>
+		</ThemeProvider>
 	);
 };
 

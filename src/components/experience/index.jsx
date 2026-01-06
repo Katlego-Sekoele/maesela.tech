@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./styles.css";
 
 const Experience = ({
 	company,
@@ -10,83 +11,44 @@ const Experience = ({
 	current,
 	keyPoints,
 }) => {
-	const startDateString = new Date(startDate).toLocaleDateString("en-ZA", {
+	const startDateString = new Date(startDate).toLocaleDateString(undefined, {
 		month: "numeric",
 		year: "numeric",
 	});
-	const endDateString = new Date(endDate).toLocaleDateString("en-ZA", {
+	const endDateString = new Date(endDate).toLocaleDateString(undefined, {
 		month: "numeric",
 		year: "numeric",
 	});
 
 	return (
-		<div>
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "space-between",
-					flexWrap: "wrap",
-				}}
-			>
+		<div className="experience-container">
+			<div className="item-header">
 				<a
-					style={{
-						fontWeight: "600",
-						textDecoration: "none",
-						hover: "underline",
-						color: "black",
-						display: "flex",
-						alignItems: "center",
-					}}
+					className="item-link"
 					href={companyLink}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
 					{current ? (
-						<span
-							style={{
-								fontSize: "1rem",
-								marginRight: "0.2rem",
-								color: "blue",
-								verticalAlign: "middle",
-							}}
-						>
+						<span className="current-indicator">
 							●
 						</span>
 					) : null}
 					{company}
 				</a>
-				<div
-					style={{
-						fontSize: "0.8rem",
-						marginBottom: "0.5rem",
-					}}
-				>
+				<div className="item-date">
 					{startDateString} - {endDate ? endDateString : "now"}
 				</div>
 			</div>
-			<div
-				style={{
-					color: "gray",
-				}}
-			>
+			<div className="item-position">
 				{position}
 			</div>
-			<div
-				style={{
-					marginBottom: "1rem",
-					lineHeight: "1.1em",
-				}}
-			>
+			<div className="item-description">
 				{description}
 				{keyPoints ? (
-					<ul
-						style={{
-							paddingLeft: "1rem",
-							marginTop: "0.5rem",
-						}}
-					>
+					<ul className="item-key-points">
 						{keyPoints.map((point, index) => (
-							<li>{point}</li>
+							<li key={index}>{point}</li>
 						))}
 					</ul>
 				) : null}
@@ -107,3 +69,4 @@ Experience.propTypes = {
 };
 
 export default Experience;
+

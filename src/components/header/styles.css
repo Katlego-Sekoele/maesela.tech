@@ -11,7 +11,7 @@
     font-weight: 900;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
 }
 
 #name:hover {
@@ -23,9 +23,9 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 0.0625rem solid hsl(var(--border-color));
     padding: var(--padding-medium) var(--padding-medium) var(--padding-large);
-    background-color: var(--background);
+    background-color: hsl(var(--background));
 }
 
 #navigation {
@@ -34,7 +34,7 @@
 }
 
 #navigation>a {
-    color: var(--muted);
+    color: hsl(var(--muted));
     margin: 0 var(--spacing-medium) 0 0;
     font-size: 1.2em;
 }
