@@ -43,14 +43,14 @@ const App = () => {
 							</ScrollableContainer>
 						}
 					/> */}
-					{/* <Route
+					<Route
 						path="/etc"
 						element={
 							<ScrollableContainer>
 								<ETC />
 							</ScrollableContainer>
 						}
-					/> */}
+					/>
 					<Route
 						path="redirect/tinkr"
 						element={

@@ -21,7 +21,7 @@ const Header = () => {
 				<Link to="/">Home</Link>
 				<Link to="/about">Me</Link>
 				<Link to="/shoutout">Shoutouts</Link>
-				{/* <Link to="/etc">Etc.</Link> */}
+				<Link to="/etc">Etc.</Link>
 				<ThemeToggle />
 			</div>
 		</header>
