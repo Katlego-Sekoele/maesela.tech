@@ -12,7 +12,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const raw = await redis.hgetall("articles");
 
     if (!raw) {
-      res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate");
+      res.setHeader("Cache-Control", "no-store");
       return res.status(200).json({ articles: [] });
     }
 
@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .map((v) => JSON.parse(v as string) as Article)
       .sort((a, b) => (a.readDate < b.readDate ? 1 : -1));
 
-    res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate");
+    res.setHeader("Cache-Control", "no-store");
     return res.status(200).json({ articles });
   } catch (err) {
     console.error("[/api/articles]", (err as Error).message);
