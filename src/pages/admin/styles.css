@@ -1,0 +1,241 @@
+/* ─── Login ──────────────────────────────────────────────────────────────── */
+
+.admin-login {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 40vh;
+  padding: var(--padding-large) var(--padding-medium);
+  gap: var(--spacing-large);
+}
+
+.admin-login__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.admin-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+/* ─── Shell ──────────────────────────────────────────────────────────────── */
+
+.admin {
+  padding: var(--padding-large) var(--padding-medium);
+}
+
+/* ─── Nav tabs ───────────────────────────────────────────────────────────── */
+
+.admin-nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--spacing-small);
+  margin-bottom: var(--spacing-large);
+  border-bottom: 0.0625rem solid hsl(var(--border-color));
+}
+
+.admin-nav__tabs {
+  display: flex;
+  gap: var(--spacing-medium);
+}
+
+.admin-nav__tab {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  color: hsl(var(--muted));
+  cursor: pointer;
+  transition: color var(--transition-duration) var(--transition-easing);
+  text-transform: lowercase;
+}
+
+.admin-nav__tab:hover {
+  color: hsl(var(--foreground));
+}
+
+.admin-nav__tab--active {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.admin-nav__logout {
+  font-size: 0.85rem;
+}
+
+/* ─── Sections ───────────────────────────────────────────────────────────── */
+
+.admin-section {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-large);
+}
+
+.admin-section__title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+/* ─── Form controls ──────────────────────────────────────────────────────── */
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+.admin-form--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.admin-input {
+  background: none;
+  border: none;
+  border-bottom: 0.0625rem solid hsl(var(--border-color));
+  color: hsl(var(--foreground));
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.15rem 0;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-input::placeholder {
+  color: hsl(var(--muted));
+}
+
+.admin-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: hsl(var(--muted));
+  cursor: pointer;
+  transition: color var(--transition-duration) var(--transition-easing);
+  white-space: nowrap;
+  text-transform: lowercase;
+}
+
+.admin-btn:hover:not(:disabled) {
+  color: hsl(var(--foreground));
+}
+
+.admin-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.admin-btn--danger {
+  color: hsl(var(--muted));
+  font-size: 0.8rem;
+}
+
+.admin-error {
+  margin: 0;
+  font-size: 0.8rem;
+  color: hsl(var(--muted));
+}
+
+.admin-success {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* ─── Dropzone ───────────────────────────────────────────────────────────── */
+
+.admin-dropzone {
+  border: 0.0625rem dashed hsl(var(--border-color));
+  padding: var(--spacing-large);
+  text-align: center;
+  cursor: pointer;
+  transition: opacity var(--transition-duration) var(--transition-easing);
+}
+
+.admin-dropzone:hover {
+  opacity: 0.7;
+}
+
+.admin-dropzone p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: hsl(var(--muted));
+}
+
+/* ─── List ───────────────────────────────────────────────────────────────── */
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-medium);
+  padding: var(--spacing-small) 0;
+  border-bottom: 0.0625rem solid hsl(var(--border-color));
+}
+
+.admin-list__item:first-child {
+  border-top: 0.0625rem solid hsl(var(--border-color));
+}
+
+.admin-list__item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.admin-list__item-title {
+  font-size: 0.9rem;
+  color: hsl(var(--foreground));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+a.admin-list__item-title:hover {
+  color: hsl(var(--secondary)) !important;
+}
+
+.admin-list__item-meta {
+  font-size: 0.78rem;
+}
+
+/* ─── Password callout ───────────────────────────────────────────────────── */
+
+.admin-callout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+  border-left: 0.0625rem solid hsl(var(--border-color));
+  padding-left: var(--spacing-medium);
+}
+
+.admin-callout__label {
+  margin: 0;
+  font-size: 0.8rem;
+  color: hsl(var(--muted));
+}
+
+.admin-callout__code {
+  font-size: 1rem;
+  word-break: break-all;
+  color: hsl(var(--foreground));
+}

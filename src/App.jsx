@@ -8,6 +8,7 @@ import Shoutout from "./pages/shoutout";
 import About from "./pages/about";
 import INF3012_Notes from "./pages/notes/INF3012S";
 import ETC from "./pages/etc";
+import Admin from "./pages/admin";
 import { useEffect } from "react";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
@@ -51,7 +52,8 @@ const App = () => {
 							</ScrollableContainer>
 						}
 					/>
-					<Route
+					<Route path="/admin" element={<ScrollableContainer><Admin /></ScrollableContainer>} />
+				<Route
 						path="redirect/tinkr"
 						element={
 							<Tinkr />

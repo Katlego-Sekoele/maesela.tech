@@ -90,8 +90,13 @@ function buildMosaicLayout(items, cols) {
   return layout;
 }
 
-function proxyUrl(blobUrl, width, quality) {
-  const params = new URLSearchParams({ url: blobUrl, v: PHOTO_PROXY_VERSION });
+function proxyUrl(photo, width, quality) {
+  const params = new URLSearchParams({
+    id: photo.photoId,
+    exp: String(photo.exp),
+    sig: photo.sig,
+    v: PHOTO_PROXY_VERSION,
+  });
   if (width) params.set('w', String(width));
   if (quality) params.set('q', String(quality));
   return `/api/photo?${params}`;
@@ -102,10 +107,10 @@ function PhotoCard({ photo, index, tile }) {
   const [loadedStages, setLoadedStages] = useState([false, false, false]);
   const lastStage = 2;
   const stageSrc = useMemo(() => ([
-    proxyUrl(photo.url, 140, 24),
-    proxyUrl(photo.url, 460, 52),
-    proxyUrl(photo.url, THUMB_WIDTH, 84),
-  ]), [photo.url]);
+    proxyUrl(photo, 140, 24),
+    proxyUrl(photo, 460, 52),
+    proxyUrl(photo, THUMB_WIDTH, 84),
+  ]), [photo.photoId, photo.exp, photo.sig]);
 
   useEffect(() => {
     setRequestedStage(0);
@@ -158,7 +163,7 @@ function PhotoCard({ photo, index, tile }) {
   );
 }
 
-export default function PhotoGallery() {
+export default function PhotoGallery({ token, onAuthExpired }) {
   const [densityIndex, setDensityIndex] = useState(1);
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -172,7 +177,14 @@ export default function PhotoGallery() {
       offset: String(offset),
       limit: String(PAGE_SIZE),
     });
-    const response = await fetch(`/api/photos?${params.toString()}`);
+    const response = await fetch(`/api/photos?${params.toString()}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (response.status === 401) {
+      sessionStorage.removeItem('gallery_token');
+      onAuthExpired();
+      return;
+    }
     if (!response.ok) {
       throw new Error('Could not load photos.');
     }

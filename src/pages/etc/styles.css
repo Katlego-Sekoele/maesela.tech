@@ -1,3 +1,112 @@
+/* ─── Gallery Auth ───────────────────────────────────────────────────────── */
+
+.gallery-auth {
+  margin-bottom: var(--spacing-large);
+}
+
+.gallery-auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+.gallery-auth__label {
+  margin: 0;
+  font-size: 0.85rem;
+  color: hsl(var(--muted));
+}
+
+.gallery-auth__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-medium);
+}
+
+.gallery-auth__input {
+  background: none;
+  border: none;
+  border-bottom: 0.0625rem solid hsl(var(--border-color));
+  color: hsl(var(--foreground));
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.15rem 0;
+  outline: none;
+  width: 14rem;
+}
+
+.gallery-auth__btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: hsl(var(--muted));
+  cursor: pointer;
+  transition: color var(--transition-duration) var(--transition-easing);
+}
+
+.gallery-auth__btn:hover:not(:disabled) {
+  color: hsl(var(--foreground));
+}
+
+.gallery-auth__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.gallery-auth__error {
+  margin: 0;
+  font-size: 0.8rem;
+  color: hsl(var(--muted));
+}
+
+/* ─── Articles ───────────────────────────────────────────────────────────── */
+
+.article-list {
+  padding: var(--padding-large) var(--padding-medium) 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.article-list__header {
+  display: flex;
+  align-items: baseline;
+  padding-bottom: var(--spacing-small);
+  margin-bottom: var(--spacing-large);
+  border-bottom: 0.0625rem solid hsl(var(--border-color));
+}
+
+.article-list__heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.article-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-large);
+  margin-bottom: var(--spacing-large);
+}
+
+.article-card__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+}
+
+.article-card__desc {
+  margin: 0 0 0.2rem;
+  font-size: 0.85rem;
+  color: hsl(var(--muted));
+}
+
+.article-card__meta {
+  font-size: 0.78rem;
+  color: hsl(var(--muted));
+}
+
 /* ─── Photo Gallery ──────────────────────────────────────────────────────── */
 
 .gallery-wrapper {
@@ -14,6 +123,7 @@
   gap: var(--spacing-small);
   padding-bottom: var(--spacing-small);
   margin-bottom: var(--spacing-large);
+  border-bottom: 0.0625rem solid hsl(var(--border-color));
 }
 
 .gallery-title {
