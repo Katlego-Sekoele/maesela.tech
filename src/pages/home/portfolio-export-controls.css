@@ -1,0 +1,176 @@
+.portfolio-export-controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-medium, 0.75rem);
+	align-items: center;
+	margin: 0 0 0.75rem;
+}
+
+.portfolio-export-btn {
+	font: inherit;
+	cursor: pointer;
+	padding: 0.35em 0.75em;
+	border: 0.0625rem solid hsl(var(--border-color));
+	border-radius: 0.25rem;
+	background: hsl(var(--background) / 0.6);
+	color: inherit;
+}
+
+.portfolio-export-btn:hover:not(:disabled) {
+	background: hsl(var(--background) / 0.9);
+}
+
+.portfolio-export-btn:disabled {
+	opacity: 0.65;
+	cursor: not-allowed;
+}
+
+.portfolio-export-btn-primary {
+	border-color: hsl(var(--border-color));
+	font-weight: 600;
+}
+
+.portfolio-export-error {
+	margin: 0;
+	font-size: 0.9em;
+	color: hsl(var(--muted));
+}
+
+/* —— Modal —— */
+.portfolio-export-modal-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.25rem;
+	box-sizing: border-box;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-export-modal {
+	display: flex;
+	flex-direction: column;
+	max-height: min(90vh, 52rem);
+	width: min(42rem, 100%);
+	border-radius: 0.5rem;
+	border: 0.0625rem solid hsl(var(--border-color));
+	background: hsl(var(--background));
+	color: hsl(var(--foreground));
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+	overflow: hidden;
+}
+
+.portfolio-export-modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem 1.25rem;
+	border-bottom: 0.0625rem solid hsl(var(--border-color));
+	flex-shrink: 0;
+}
+
+.portfolio-export-modal-header h2 {
+	margin: 0;
+	font-size: 1.125rem;
+	font-weight: 600;
+}
+
+.portfolio-export-modal-close {
+	font: inherit;
+	padding: 0.15rem 0.5rem;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.25rem;
+	background: transparent;
+	color: hsl(var(--muted));
+	font-size: 1.5rem;
+	line-height: 1.2;
+}
+
+.portfolio-export-modal-close:hover {
+	background: hsl(var(--background) / 0.8);
+	color: hsl(var(--foreground));
+}
+
+.portfolio-export-modal-body {
+	flex: 1;
+	min-height: 12rem;
+	overflow: auto;
+	padding: 1rem 1.25rem;
+}
+
+.portfolio-export-modal-loading {
+	margin: 0;
+	color: hsl(var(--muted));
+}
+
+/* Light preview area — matches PDF output */
+.portfolio-export-preview {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 1.5rem;
+	border-radius: 0.35rem;
+	background: #fff;
+	color: #111;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 11pt;
+	line-height: 1.45;
+}
+
+.portfolio-export-preview h1 {
+	font-size: 1.6rem;
+	margin: 0 0 0.75rem;
+}
+
+.portfolio-export-preview h2 {
+	font-size: 1.2rem;
+	margin: 1.25rem 0 0.5rem;
+	page-break-after: avoid;
+}
+
+.portfolio-export-preview h3 {
+	font-size: 1.05rem;
+	margin: 0.85rem 0 0.35rem;
+	page-break-after: avoid;
+}
+
+.portfolio-export-preview p {
+	margin: 0 0 0.5rem;
+}
+
+.portfolio-export-preview ul {
+	margin: 0 0 0.5rem;
+	padding-left: 1.25rem;
+}
+
+.portfolio-export-preview a {
+	color: #0b57d0;
+}
+
+.portfolio-export-modal-footer {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.75rem;
+	padding: 1rem 1.25rem;
+	border-top: 0.0625rem solid hsl(var(--border-color));
+	flex-shrink: 0;
+}
+
+.portfolio-export-modal-footer-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-medium, 0.75rem);
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.portfolio-export-modal-footer-error {
+	margin: 0;
+	font-size: 0.9em;
+	color: hsl(var(--muted));
+	text-align: right;
+}

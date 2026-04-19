@@ -1,37 +1,21 @@
 import "../../App.css";
 import "./styles.css";
 import ScrollableContainer from "../../components/scrollable-container";
-import Construction from "../construction";
 import Experience from "../../components/experience";
-import { Educations, Experiences, Projects, ShortBio, Socials, Certifications, Videos } from "../../data";
+import { ShortBio, Socials } from "../../data";
 import Education from "../../components/education";
 import Certification from "../../components/certification";
 import Video from "../../components/video";
+import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
+import { PortfolioExportControls } from "./portfolio-export-controls";
 
 function Home() {
-	const sortedExperiences = Experiences.toSorted((a, b) => {
-		//undefined implies until now
-		if (a.endDate === undefined) return -1;
-		if (b.endDate === undefined) return 1;
-
-		return b.endDate - a.endDate;
-	});
-	const sortedEducations = Educations.toSorted((a, b) => {
-		//undefined implies until now
-		if (a.endDate === undefined) return -1;
-		if (b.endDate === undefined) return 1;
-		return b.endDate - a.endDate;
-	});
-
-	const sortedCertifications = Certifications.toSorted((a, b) => {
-		return b.acquiredDate - a.acquiredDate;
-	});
-
-	const sortedVideos = Videos.toSorted((a, b) => {
-		return b.publishedDate - a.publishedDate;
-	});
-
-	const projectNames = Projects.map((project, _) => project.name);
+	const {
+		experiences: sortedExperiences,
+		educations: sortedEducations,
+		certifications: sortedCertifications,
+		videos: sortedVideos,
+	} = getHomePortfolioSnapshot();
 
 	return (
 		<main id="main-container">
@@ -45,6 +29,7 @@ function Home() {
 					.
 				</p>
 				<p>My current obsessions are {ShortBio.current.interests.slice(0, -1).join(", ")} and {ShortBio.current.interests[ShortBio.current.interests.length - 1]}.</p>
+				<PortfolioExportControls />
 				<p className="text-links">
 					<a
 						href={Socials.github}
@@ -85,74 +70,66 @@ function Home() {
 
 				<h2 className="section-title">Experience</h2>
 				<div className="section">
-					{sortedExperiences.map((experience, index) => {
-						return experience.shown ? (
-							<Experience
-								key={index}
-								company={experience.company}
-								companyLink={experience.companyLink}
-								position={experience.position}
-								startDate={experience.startDate}
-								endDate={experience.endDate}
-								description={experience.description}
-								current={experience.current}
-								keyPoints={experience.keyPoints}
-							/>
-						) : null;
-					})}
+					{sortedExperiences.map((experience, index) => (
+						<Experience
+							key={index}
+							company={experience.company}
+							companyLink={experience.companyLink}
+							position={experience.position}
+							startDate={experience.startDate}
+							endDate={experience.endDate}
+							description={experience.description}
+							current={experience.current}
+							keyPoints={experience.keyPoints}
+						/>
+					))}
 				</div>
 				<h2 className="section-title">Education</h2>
 				<div className="section">
-					{sortedEducations.map((experience, index) => {
-						return experience.shown ? (
-							<Education
-								key={index}
-								company={experience.company}
-								companyLink={experience.companyLink}
-								position={experience.position}
-								startDate={experience.startDate}
-								endDate={experience.endDate}
-								description={experience.description}
-								current={experience.current}
-								keyPoints={experience.keyPoints}
-								graduationDate={experience.graduationDate}
-								grade={experience.grade}
-							/>
-						) : null;
-					})}
+					{sortedEducations.map((experience, index) => (
+						<Education
+							key={index}
+							company={experience.company}
+							companyLink={experience.companyLink}
+							position={experience.position}
+							startDate={experience.startDate}
+							endDate={experience.endDate}
+							description={experience.description}
+							current={experience.current}
+							keyPoints={experience.keyPoints}
+							graduationDate={experience.graduationDate}
+							grade={experience.grade}
+						/>
+					))}
 				</div>
 			</ScrollableContainer>
 			<ScrollableContainer className="scrollable-container">
 				<h2 className="section-title">Certifications</h2>
 				<div className="section">
-					{sortedCertifications.map((certification, index) => {
-						return certification.shown ? (
-							<Certification
-								key={index}
-								name={certification.name}
-								detailsLink={certification.detailsLink}
-								verificationLink={certification.verificationLink}
-								description={certification.description}
-								acquiredDate={certification.acquiredDate}
-								expiryDate={certification.expiryDate}
-							/>
-						) : null;
-					})}
+					{sortedCertifications.map((certification, index) => (
+						<Certification
+							key={index}
+							name={certification.name}
+							detailsLink={certification.detailsLink}
+							verificationLink={certification.verificationLink}
+							description={certification.description}
+							acquiredDate={certification.acquiredDate}
+							expiryDate={certification.expiryDate}
+						/>
+					))}
 				</div>
 				<h2 className="section-title">Videos</h2>
 				<div className="section">
-					{sortedVideos.map((video, index) => {
-						return video.shown ? (
-							<Video
-								key={index}
-								title={video.title}
-								link={video.link}
-								description={video.description}
-								publishedDate={video.publishedDate}
-								thumbnail={video.thumbnail}
-							/>
-						) : null;
-					})}
+					{sortedVideos.map((video, index) => (
+						<Video
+							key={index}
+							title={video.title}
+							link={video.link}
+							description={video.description}
+							publishedDate={video.publishedDate}
+							thumbnail={video.thumbnail}
+						/>
+					))}
 				</div>
 				{/* <div>
 					<h2 className="section-title">Projects</h2>
