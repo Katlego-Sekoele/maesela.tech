@@ -6,11 +6,11 @@ import { ShortBio, Socials } from "../../data";
 import { PortfolioExportControls } from "./portfolio-export-controls";
 
 const SECTIONS = [
-	{ to: "/experience", label: "Experience", blurb: "Where I've built software and what I shipped." },
-	{ to: "/projects", label: "Projects", blurb: "Side projects, experiments, and coursework." },
-	{ to: "/education", label: "Education", blurb: "Computer science, information systems, and fintech." },
-	{ to: "/certifications", label: "Certifications", blurb: "Professional certifications I've earned." },
-	{ to: "/talks", label: "Talks", blurb: "Talks I've given and things I've explained." },
+	{ to: "/experience", kicker: "Work", label: "Experience", blurb: "Where I've built software and what I shipped." },
+	{ to: "/projects", kicker: "Builds", label: "Projects", blurb: "Side projects, experiments, and coursework." },
+	{ to: "/education", kicker: "Studies", label: "Education", blurb: "Computer science, information systems, and fintech." },
+	{ to: "/certifications", kicker: "Credentials", label: "Certifications", blurb: "Professional certifications I've earned." },
+	{ to: "/talks", kicker: "Speaking", label: "Talks", blurb: "Talks I've given and things I've explained." },
 ];
 
 function Home() {
@@ -21,7 +21,8 @@ function Home() {
 			: interests[0];
 
 	return (
-		<article className="page home">
+		<article className="page page--wide home">
+			<div className="home-lede">
 			<PageHeader
 				eyebrow="Maesela Sekoele — Software Engineer"
 				title="I build things with code."
@@ -48,16 +49,25 @@ function Home() {
 			</p>
 
 			<PortfolioExportControls />
+			</div>
 
-			<nav className="home-index" aria-label="Sections">
-				<p className="eyebrow home-index__label">Explore</p>
-				<ul className="home-index__list">
-					{SECTIONS.map(({ to, label, blurb }) => (
-						<li key={to} className="home-index__item">
-							<Link to={to} className="home-index__link">
-								<span className="home-index__title serif">{label}</span>
-								<span className="home-index__blurb">{blurb}</span>
-								<span className="home-index__arrow" aria-hidden="true">→</span>
+			<nav className="home-cards" aria-label="Sections">
+				<p className="eyebrow home-cards__label">Explore</p>
+				<ul className="home-cards__grid">
+					{SECTIONS.map(({ to, kicker, label, blurb }, index) => (
+						<li key={to} className="home-cards__item">
+							<Link to={to} className="scard">
+								<p className="eyebrow scard__eyebrow">
+									#{index + 1} {kicker}
+								</p>
+								<h2 className="serif scard__title">{label}</h2>
+								<div className="scard__visual" aria-hidden="true">
+									<span className="scard__num">
+										{String(index + 1).padStart(2, "0")}
+									</span>
+									<span className="scard__arrow">↗</span>
+								</div>
+								<p className="scard__caption">{blurb}</p>
 							</Link>
 						</li>
 					))}
