@@ -150,9 +150,8 @@ export const Experiences = [
 		endDate: undefined,
 		shown: true,
 		description:
-			"Top contributor to a large enterprise HR & workforce-management platform (Nx monorepo) serving ~1,000 employees, owning features end-to-end across the stack.",
+			"Build features end-to-end on a large enterprise HR & workforce-management platform (Nx monorepo) serving ~1,000 employees, across the full stack.",
 		keyPoints: [
-			"Ranked #1 contributor (~20% of ~440 commits) on the platform",
 			"Owned a greenfield internal-mobility product: relational schema, REST APIs, a configurable status state machine, multi-level approval workflows, audit trail, and queue-driven email",
 			"Full-stack across Angular, Node.js/Express, and SQL Server (migrations, stored procedures, triggers, point-in-time analytics), deployed via Docker on Azure",
 			"Built HR analytics dashboards and a chunked bulk-import pipeline (Azure blob/queue triggers); integrated the enterprise directory via Microsoft Graph API",
@@ -244,7 +243,7 @@ export const Educations = [
 ];
 
 export const ShortBio = {
-	bio: "Hi! 👋🏾 I'm Maesela — an impact-driven full-stack software engineer and a top contributor to a large enterprise HR & workforce-management platform. I love the intersection of information, people, processes, and technology, and owning features end-to-end: from SQL Server schema to Node.js/TypeScript APIs to the Angular UI.",
+	bio: "Hi! 👋🏾 I'm Maesela — an impact-driven full-stack software engineer building on a large enterprise HR & workforce-management platform. I love the intersection of information, people, processes, and technology, and owning features end-to-end: from SQL Server schema to Node.js/TypeScript APIs to the Angular UI.",
 	current: {
 		activity: "working as a",
 		position: "Junior Software Engineer",
