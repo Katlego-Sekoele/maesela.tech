@@ -6,6 +6,11 @@ import ThemeToggle from "../theme-toggle";
 
 const NAV = [
 	{ to: "/", label: "home", end: true },
+	{ to: "/experience", label: "experience" },
+	{ to: "/projects", label: "projects" },
+	{ to: "/education", label: "education" },
+	{ to: "/certifications", label: "certifications" },
+	{ to: "/talks", label: "talks" },
 	{ to: "/about", label: "about" },
 	{ to: "/etc", label: "etc" },
 ];

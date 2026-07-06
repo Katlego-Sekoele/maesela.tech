@@ -5,14 +5,18 @@ const Project = ({ name, descriptionParagraphs, links, primaryLink }) => {
 	return (
 		<div className="project-container">
 			<div className="item-header">
-				<a
-					className="item-link"
-					href={primaryLink}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					{name}
-				</a>
+				{primaryLink ? (
+					<a
+						className="item-link"
+						href={primaryLink}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{name}
+					</a>
+				) : (
+					<span className="item-link">{name}</span>
+				)}
 			</div>
 			{descriptionParagraphs && (
 				<div className="item-description">

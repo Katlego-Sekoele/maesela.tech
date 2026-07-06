@@ -150,13 +150,13 @@ export const Experiences = [
 		endDate: undefined,
 		shown: true,
 		description:
-			"Currently employed as a Software Engineer working on internal human resources software focusing annual performance reviews. Technologies & tooling:",
+			"Top contributor to a large enterprise HR & workforce-management platform (Nx monorepo) serving ~1,000 employees, owning features end-to-end across the stack.",
 		keyPoints: [
-			"Angular / TypeScript / Angular Material",
-			"Node.js / Express / Microsoft SQL Server",
-			"Docker / NX Monorepo",
-			"Azure / GitLab",
-			"Cursor"
+			"Ranked #1 contributor (~20% of ~440 commits) on the platform",
+			"Owned a greenfield internal-mobility product: relational schema, REST APIs, a configurable status state machine, multi-level approval workflows, audit trail, and queue-driven email",
+			"Full-stack across Angular, Node.js/Express, and SQL Server (migrations, stored procedures, triggers, point-in-time analytics), deployed via Docker on Azure",
+			"Built HR analytics dashboards and a chunked bulk-import pipeline (Azure blob/queue triggers); integrated the enterprise directory via Microsoft Graph API",
+			"Built custom AI dev workflows (Cursor, Claude Code, MCP) automating ticket creation and release notes",
 		],
 		companyLink: "https://www.bbdsoftware.com/",
 		current: true,
@@ -164,6 +164,24 @@ export const Experiences = [
 ];
 
 export const Educations = [
+	new Education({
+		company: "University of Cape Town",
+		position: "MPhil specialising in Financial Technology",
+		startDate: new Date("2025-02-01"),
+		endDate: undefined,
+		description: "Focus areas:",
+		keyPoints: [
+			"Financial Software Engineering",
+			"Fintech & Cryptocurrencies",
+			"Databases",
+			"Supervised Learning",
+		],
+		shown: true,
+		companyLink: "https://www.uct.ac.za/",
+		current: true,
+		grade: undefined,
+		graduationDate: new Date("2027-12-15"),
+	}),
 	new Education({
 		company: "Curro Aurora High School",
 		position: "IEB Matriculation",
@@ -226,15 +244,15 @@ export const Educations = [
 ];
 
 export const ShortBio = {
-	bio: "Hi! 👋🏾 I'm Maesela. I am pursuing a career in software engineering 💻. I am passionate about the intersection of information, people, processes, and technology and how they can be leveraged to optimise businesses and bring value to users.",
+	bio: "Hi! 👋🏾 I'm Maesela — an impact-driven full-stack software engineer and a top contributor to a large enterprise HR & workforce-management platform. I love the intersection of information, people, processes, and technology, and owning features end-to-end: from SQL Server schema to Node.js/TypeScript APIs to the Angular UI.",
 	current: {
 		activity: "working as a",
-		position: "Software Engineer",
+		position: "Junior Software Engineer",
 		company: "BBD Software",
 		interests: [
 			"Agentic AI",
-			"Web development",
-			"TypeScript"
+			"Financial technology",
+			"Full-stack web development",
 		]
 	},
 };
@@ -254,6 +272,7 @@ export const About = {
 		"I am passionate about using my knowledge of computer science and business computing to make a positive impact. With a strong affinity for learning and a passion for technology, I am a firm believer in the power of continuous learning and improvement. I follow the CL/CI (continuous learning and continuous improvement) framework (totally made up), which guides me in my pursuit of personal and professional growth.",
 		"In addition to my passion for technology and education, I am also interested in gaming, music festivals, and to a lesser extent, fashion.",
 		"Throughout my academic career, I have proven myself to be a strong academic achiever and a self-motivated student. I am proud to have been on the Dean's Merit List for the entire duration of my undergraduate degree and completed my honours degree with a distinction in my research project. I am not afraid to ask questions, seek out new challenges, and learn from my peers and those more knowledgeable than I am.",
+		"A highlight along the way: my team won the national Discovery GradHack (R100 000 prize), selected among 50 finalists from universities across South Africa, with SafeRoute — a data-driven, real-time safe-navigation app that pre-plans routes avoiding load-shedding and crime hotspots.",
 		"I am excited to see where my career will take me and to continue pursuing my passion for software engineering.",
 	],
 };
@@ -399,8 +418,8 @@ export const Projects = [
 	new Project({
 		name: "Financial News Sentiment Analysis",
 		descriptionParagraphs: [
-			"A full-stack tool that automatically analyses the sentiment of financial news using natural language processing.",
-			"NLP pipeline built in Python with NLTK, paired with a separate backend and frontend.",
+			"My honours research project: a full-stack financial-news sentiment analysis tool built following a Design Science Research methodology.",
+			"A Python/Flask API scrapes headlines (BeautifulSoup) and runs an NLTK pipeline (tokenisation, lemmatisation, stop-word removal) before classification. I trained and compared SVM (scikit-learn), word embeddings (gensim), and neural networks (TensorFlow/Keras) on the Financial PhraseBank, evaluating with F1, MCC, and non-parametric significance tests. Predictions surface in a Next.js + TypeScript dashboard.",
 		],
 		links: [
 			new ProjectLink({
@@ -409,6 +428,26 @@ export const Projects = [
 			}),
 		],
 		primaryLink: "https://github.com/Katlego-Sekoele/Automatic-Financial-News-Sentiment-Analysis",
+		images: [],
+	}),
+	new Project({
+		name: "Boids Flocking Simulation",
+		descriptionParagraphs: [
+			"A Java + JavaFX implementation of Craig Reynolds' \"Boids\" algorithm, simulating the emergent flocking of birds, herds, and schools.",
+			"Built in a team of three, planned extensively with UML and managed with a Kanban approach in Notion.",
+		],
+		links: [],
+		primaryLink: null,
+		images: [],
+	}),
+	new Project({
+		name: "Business Process Improvement for SAPS",
+		descriptionParagraphs: [
+			"A business-process management and improvement consulting project for the South African Police Service and the Department of Public Service and Administration.",
+			"Worked in a team of six to analyse a business process and propose improvements; the report earned recognition from EY for its quality and suggestions.",
+		],
+		links: [],
+		primaryLink: null,
 		images: [],
 	}),
 	new Project({

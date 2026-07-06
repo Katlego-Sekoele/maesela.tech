@@ -1,23 +1,19 @@
 import "../../App.css";
 import "./styles.css";
-import Experience from "../../components/experience";
+import { Link } from "react-router-dom";
+import PageHeader from "../../components/page-header";
 import { ShortBio, Socials } from "../../data";
-import Education from "../../components/education";
-import Certification from "../../components/certification";
-import Video from "../../components/video";
-import Project from "../../components/project";
-import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 import { PortfolioExportControls } from "./portfolio-export-controls";
 
-function Home() {
-	const {
-		experiences: sortedExperiences,
-		educations: sortedEducations,
-		certifications: sortedCertifications,
-		videos: sortedVideos,
-		projects: sortedProjects,
-	} = getHomePortfolioSnapshot();
+const SECTIONS = [
+	{ to: "/experience", label: "Experience", blurb: "Where I've built software and what I shipped." },
+	{ to: "/projects", label: "Projects", blurb: "Side projects, experiments, and coursework." },
+	{ to: "/education", label: "Education", blurb: "Computer science, information systems, and fintech." },
+	{ to: "/certifications", label: "Certifications", blurb: "Professional certifications I've earned." },
+	{ to: "/talks", label: "Talks", blurb: "Talks I've given and things I've explained." },
+];
 
+function Home() {
 	const interests = ShortBio.current.interests;
 	const interestList =
 		interests.length > 1
@@ -26,7 +22,10 @@ function Home() {
 
 	return (
 		<article className="page home">
-			<p className="eyebrow">Maesela Sekoele — Software Engineer</p>
+			<PageHeader
+				eyebrow="Maesela Sekoele — Software Engineer"
+				title="I build things with code."
+			/>
 
 			<div className="home-intro serif-body">
 				<p>{ShortBio.bio}</p>
@@ -50,93 +49,20 @@ function Home() {
 
 			<PortfolioExportControls />
 
-			<section className="home-section">
-				<h2 className="section-title serif">Experience</h2>
-				<div className="section">
-					{sortedExperiences.map((experience, index) => (
-						<Experience
-							key={index}
-							company={experience.company}
-							companyLink={experience.companyLink}
-							position={experience.position}
-							startDate={experience.startDate}
-							endDate={experience.endDate}
-							description={experience.description}
-							current={experience.current}
-							keyPoints={experience.keyPoints}
-						/>
+			<nav className="home-index" aria-label="Sections">
+				<p className="eyebrow home-index__label">Explore</p>
+				<ul className="home-index__list">
+					{SECTIONS.map(({ to, label, blurb }) => (
+						<li key={to} className="home-index__item">
+							<Link to={to} className="home-index__link">
+								<span className="home-index__title serif">{label}</span>
+								<span className="home-index__blurb">{blurb}</span>
+								<span className="home-index__arrow" aria-hidden="true">→</span>
+							</Link>
+						</li>
 					))}
-				</div>
-			</section>
-
-			<section className="home-section">
-				<h2 className="section-title serif">Education</h2>
-				<div className="section">
-					{sortedEducations.map((experience, index) => (
-						<Education
-							key={index}
-							company={experience.company}
-							companyLink={experience.companyLink}
-							position={experience.position}
-							startDate={experience.startDate}
-							endDate={experience.endDate}
-							description={experience.description}
-							current={experience.current}
-							keyPoints={experience.keyPoints}
-							graduationDate={experience.graduationDate}
-							grade={experience.grade}
-						/>
-					))}
-				</div>
-			</section>
-
-			<section className="home-section">
-				<h2 className="section-title serif">Projects</h2>
-				<div className="section">
-					{sortedProjects.map((project, index) => (
-						<Project
-							key={index}
-							name={project.name}
-							descriptionParagraphs={project.descriptionParagraphs}
-							links={project.links}
-							primaryLink={project.primaryLink}
-						/>
-					))}
-				</div>
-			</section>
-
-			<section className="home-section">
-				<h2 className="section-title serif">Certifications</h2>
-				<div className="section">
-					{sortedCertifications.map((certification, index) => (
-						<Certification
-							key={index}
-							name={certification.name}
-							detailsLink={certification.detailsLink}
-							verificationLink={certification.verificationLink}
-							description={certification.description}
-							acquiredDate={certification.acquiredDate}
-							expiryDate={certification.expiryDate}
-						/>
-					))}
-				</div>
-			</section>
-
-			<section className="home-section">
-				<h2 className="section-title serif">Videos</h2>
-				<div className="section">
-					{sortedVideos.map((video, index) => (
-						<Video
-							key={index}
-							title={video.title}
-							link={video.link}
-							description={video.description}
-							publishedDate={video.publishedDate}
-							thumbnail={video.thumbnail}
-						/>
-					))}
-				</div>
-			</section>
+				</ul>
+			</nav>
 		</article>
 	);
 }

@@ -5,6 +5,11 @@ import Header from "./components/header";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 const Home = lazy(() => import("./pages/home"));
+const ExperiencePage = lazy(() => import("./pages/experience"));
+const EducationPage = lazy(() => import("./pages/education"));
+const ProjectsPage = lazy(() => import("./pages/projects"));
+const CertificationsPage = lazy(() => import("./pages/certifications"));
+const TalksPage = lazy(() => import("./pages/talks"));
 const About = lazy(() => import("./pages/about"));
 // const Shoutout = lazy(() => import("./pages/shoutout")); // disabled for now
 const ETC = lazy(() => import("./pages/etc"));
@@ -20,6 +25,11 @@ const App = () => {
 					<Suspense fallback={<div className="route-fallback" aria-hidden="true" />}>
 						<Routes>
 							<Route path="/" element={<Home />} index />
+							<Route path="/experience" element={<ExperiencePage />} />
+							<Route path="/education" element={<EducationPage />} />
+							<Route path="/projects" element={<ProjectsPage />} />
+							<Route path="/certifications" element={<CertificationsPage />} />
+							<Route path="/talks" element={<TalksPage />} />
 							<Route path="/about" element={<About />} />
 							<Route path="/etc" element={<ETC />} />
 							<Route path="/admin" element={<Admin />} />
