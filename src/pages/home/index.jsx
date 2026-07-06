@@ -5,7 +5,6 @@ import { ShortBio, Socials } from "../../data";
 import Education from "../../components/education";
 import Certification from "../../components/certification";
 import Video from "../../components/video";
-import MksObject from "../../components/mks-object";
 import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 import { PortfolioExportControls } from "./portfolio-export-controls";
 
@@ -46,8 +45,6 @@ function Home() {
 				<a className="u-link" href={Socials.spotify} target="_blank" rel="noopener noreferrer">Spotify</a>
 				<a className="u-link" href={Socials.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
 			</p>
-
-			<MksObject />
 
 			<PortfolioExportControls />
 

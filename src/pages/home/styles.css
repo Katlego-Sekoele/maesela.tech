@@ -30,11 +30,6 @@
 	color: hsl(var(--secondary)) !important;
 }
 
-/* Space around the 3D monogram card */
-.home .mks-object {
-	margin: var(--spacing-large) 0;
-}
-
 .home-section {
 	margin-top: 3rem;
 }

@@ -1,12 +1,8 @@
 @import "../shared.css";
 
 .video-header {
-	align-items: flex-start;
-	margin-bottom: var(--spacing-small);
-}
-
-.video-title-link {
-	font-size: 1.1rem;
+	align-items: baseline;
+	margin-bottom: var(--spacing-medium);
 }
 
 .video-thumbnail-container {
@@ -14,10 +10,15 @@
 	margin-bottom: var(--spacing-small);
 	position: relative;
 	width: 100%;
+	border: 1px solid hsl(var(--border));
 	border-radius: var(--radius);
 	overflow: hidden;
 	text-decoration: none;
-	transition: transform var(--transition-duration) var(--transition-easing);
+	transition: border-color var(--transition-duration) var(--transition-easing);
+}
+
+.video-thumbnail-container:hover {
+	border-color: hsl(var(--secondary));
 }
 
 .video-thumbnail-wrapper {
