@@ -1,0 +1,28 @@
+@import "../shared.css";
+
+.project-container .item-description p {
+	margin: 0 0 0.5em;
+}
+
+.project-container .item-description p:last-child {
+	margin-bottom: 0;
+}
+
+.project-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 var(--spacing-medium);
+	margin-top: 0.7rem;
+}
+
+.project-link {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: hsl(var(--muted));
+}
+
+.project-link:hover {
+	color: hsl(var(--secondary)) !important;
+}

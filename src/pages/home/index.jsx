@@ -5,6 +5,7 @@ import { ShortBio, Socials } from "../../data";
 import Education from "../../components/education";
 import Certification from "../../components/certification";
 import Video from "../../components/video";
+import Project from "../../components/project";
 import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 import { PortfolioExportControls } from "./portfolio-export-controls";
 
@@ -14,6 +15,7 @@ function Home() {
 		educations: sortedEducations,
 		certifications: sortedCertifications,
 		videos: sortedVideos,
+		projects: sortedProjects,
 	} = getHomePortfolioSnapshot();
 
 	const interests = ShortBio.current.interests;
@@ -83,6 +85,21 @@ function Home() {
 							keyPoints={experience.keyPoints}
 							graduationDate={experience.graduationDate}
 							grade={experience.grade}
+						/>
+					))}
+				</div>
+			</section>
+
+			<section className="home-section">
+				<h2 className="section-title serif">Projects</h2>
+				<div className="section">
+					{sortedProjects.map((project, index) => (
+						<Project
+							key={index}
+							name={project.name}
+							descriptionParagraphs={project.descriptionParagraphs}
+							links={project.links}
+							primaryLink={project.primaryLink}
 						/>
 					))}
 				</div>

@@ -2,6 +2,7 @@ import {
 	Certifications,
 	Educations,
 	Experiences,
+	Projects,
 	Videos,
 } from "../data";
 
@@ -34,5 +35,6 @@ export function getHomePortfolioSnapshot() {
 			(c) => c.shown
 		),
 		videos: Videos.toSorted(sortVideosDesc).filter((v) => v.shown),
+		projects: Projects.filter((p) => p.shown),
 	};
 }

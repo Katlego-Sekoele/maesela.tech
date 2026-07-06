@@ -320,17 +320,19 @@ export const Videos = [
 
 class Project {
 	constructor({
-		name, 
+		name,
 		descriptionParagraphs,
 		links,
 		primaryLink,
 		images,
+		shown = true,
 	}){
 		this.name = name;
 		this.descriptionParagraphs = descriptionParagraphs;
 		this.links = links;
 		this.primaryLink = primaryLink;
 		this.images = images;
+		this.shown = shown;
 	}
 
 }
@@ -359,44 +361,143 @@ export const Projects = [
 	new Project({
 		name: "Maesela.tech",
 		descriptionParagraphs: [
-			"A personal portfolio website showcasing my projects, skills, and experiences.",
-			"Built with React, and deployed on Vercel. Nothing too fancy but I like it",
-		],
-		links: [
-			new ProjectLink({
-				name: "GitHub Repository",
-				link: "https://github.com/Katlego-Sekoele/maesela.tech",
-			}),
-			new ProjectLink({
-				name: "Hosted",
-				link: "https://www.maesela.tech"
-			})
-		],
-		primaryLink: "https://www.maesela.tech",
-		images: [
-			new ProjectImage({
-				src: "portfolio.png",
-				alt: "Screenshot of the portfolio website",
-			}),
-		],
-	}),
-	new Project({
-		name: "Gigs",
-		descriptionParagraphs: [
-			"This is a web application built with Next.js that provides a platform for students to buy and sell services from each other. The website is largely unfinished and was just used as a playground to test and learn React.js and Next.js. The website is publicly hosted on this vercel."
+			"My personal portfolio site — the one you're on now. Built with React and Vite and deployed on Vercel.",
+			"An editorial, type-led design with light/dark theming. Nothing too fancy, but I like it.",
 		],
 		links: [
 			new ProjectLink({
 				name: "GitHub",
-				link: "maesela.tech",
+				link: "https://github.com/Katlego-Sekoele/maesela.tech",
+			}),
+			new ProjectLink({
+				name: "Hosted",
+				link: "https://www.maesela.tech",
 			}),
 		],
-		primaryLink: "maesela.tech",
-		images: [
-			new ProjectImage({
-				src: "portfolio.png",
-				alt: "Screenshot of the portfolio website",
+		primaryLink: "https://www.maesela.tech",
+		images: [],
+	}),
+	new Project({
+		name: "HERP",
+		descriptionParagraphs: [
+			"A content-driven web app built with Next.js and TypeScript, backed by Contentful as a headless CMS.",
+			"Uses a shadcn/ui + Radix component system, TanStack Query for data fetching, and Recharts for data visualisation.",
+		],
+		links: [
+			new ProjectLink({
+				name: "GitHub",
+				link: "https://github.com/Katlego-Sekoele/herp",
+			}),
+			new ProjectLink({
+				name: "Hosted",
+				link: "https://herp-six.vercel.app",
 			}),
 		],
-	})
-]
+		primaryLink: "https://herp-six.vercel.app",
+		images: [],
+	}),
+	new Project({
+		name: "Financial News Sentiment Analysis",
+		descriptionParagraphs: [
+			"A full-stack tool that automatically analyses the sentiment of financial news using natural language processing.",
+			"NLP pipeline built in Python with NLTK, paired with a separate backend and frontend.",
+		],
+		links: [
+			new ProjectLink({
+				name: "GitHub",
+				link: "https://github.com/Katlego-Sekoele/Automatic-Financial-News-Sentiment-Analysis",
+			}),
+		],
+		primaryLink: "https://github.com/Katlego-Sekoele/Automatic-Financial-News-Sentiment-Analysis",
+		images: [],
+	}),
+	new Project({
+		name: "Election Platform",
+		descriptionParagraphs: [
+			"A voting/election web platform with a React (Create React App) frontend and an Express backend.",
+			"Uses Supabase for authentication, including email-confirmation flows.",
+		],
+		links: [
+			new ProjectLink({
+				name: "GitHub",
+				link: "https://github.com/Katlego-Sekoele/election-platform",
+			}),
+			new ProjectLink({
+				name: "Hosted",
+				link: "https://election-platform.vercel.app",
+			}),
+		],
+		primaryLink: "https://election-platform.vercel.app",
+		images: [],
+	}),
+	new Project({
+		name: "Gigs",
+		descriptionParagraphs: [
+			"A student services marketplace built with Next.js — a platform where students can buy and sell services from one another.",
+			"A playground project for learning React and Next.js; largely a work in progress.",
+		],
+		links: [
+			new ProjectLink({
+				name: "GitHub",
+				link: "https://github.com/Katlego-Sekoele/gigs",
+			}),
+			new ProjectLink({
+				name: "Hosted",
+				link: "https://gigs-silk.vercel.app",
+			}),
+		],
+		primaryLink: "https://gigs-silk.vercel.app",
+		images: [],
+	}),
+	new Project({
+		name: "Home Goods Store",
+		descriptionParagraphs: [
+			"An e-commerce site for home goods, built with Angular as a way to learn and explore the framework.",
+		],
+		links: [
+			new ProjectLink({
+				name: "GitHub",
+				link: "https://github.com/Katlego-Sekoele/HomeGoodsStore",
+			}),
+			new ProjectLink({
+				name: "Hosted",
+				link: "https://inf3014f-tutorial-2.onrender.com/",
+			}),
+		],
+		primaryLink: "https://inf3014f-tutorial-2.onrender.com/",
+		images: [],
+	}),
+	new Project({
+		name: "TOKDOC Protocol",
+		descriptionParagraphs: [
+			"A custom application-layer protocol designed and implemented in a Python client-server application — a first venture into socket programming and protocol design.",
+			"A team project with Owethu Novuka and Tiyani Mhlarhi; I designed and built the client.",
+		],
+		links: [
+			new ProjectLink({
+				name: "Client",
+				link: "https://github.com/Katlego-Sekoele/TOKDOC-Protocol-Client",
+			}),
+			new ProjectLink({
+				name: "Server",
+				link: "https://github.com/Katlego-Sekoele/TOKDOC-Protocol-Server",
+			}),
+		],
+		primaryLink: "https://github.com/Katlego-Sekoele/TOKDOC-Protocol-Client",
+		images: [],
+	}),
+	new Project({
+		name: "BBD Water Pipe",
+		descriptionParagraphs: [
+			"A browser-based pipe-connecting puzzle game built with vanilla HTML, CSS, and JavaScript.",
+		],
+		links: [
+			new ProjectLink({
+				name: "GitHub",
+				link: "https://github.com/Katlego-Sekoele/BBD_Water_Pipe",
+			}),
+		],
+		primaryLink: "https://github.com/Katlego-Sekoele/BBD_Water_Pipe",
+		images: [],
+	}),
+];
