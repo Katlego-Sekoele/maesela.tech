@@ -6,7 +6,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 
 const Home = lazy(() => import("./pages/home"));
 const About = lazy(() => import("./pages/about"));
-const Shoutout = lazy(() => import("./pages/shoutout"));
+// const Shoutout = lazy(() => import("./pages/shoutout")); // disabled for now
 const ETC = lazy(() => import("./pages/etc"));
 const Admin = lazy(() => import("./pages/admin"));
 const Construction = lazy(() => import("./pages/construction"));
@@ -20,7 +20,6 @@ const App = () => {
 					<Suspense fallback={<div className="route-fallback" aria-hidden="true" />}>
 						<Routes>
 							<Route path="/" element={<Home />} index />
-							<Route path="/shoutout" element={<Shoutout />} />
 							<Route path="/about" element={<About />} />
 							<Route path="/etc" element={<ETC />} />
 							<Route path="/admin" element={<Admin />} />
