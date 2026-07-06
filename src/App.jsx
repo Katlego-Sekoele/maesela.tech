@@ -1,74 +1,34 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
-import Construction from "./pages/construction";
+import { lazy, Suspense, useEffect } from "react";
 import "./App.css";
 import Header from "./components/header";
-import ScrollableContainer from "./components/scrollable-container";
-import Shoutout from "./pages/shoutout";
-import About from "./pages/about";
-import INF3012_Notes from "./pages/notes/INF3012S";
-import ETC from "./pages/etc";
-import Admin from "./pages/admin";
-import { useEffect } from "react";
 import { ThemeProvider } from "./contexts/ThemeContext";
+
+const Home = lazy(() => import("./pages/home"));
+const About = lazy(() => import("./pages/about"));
+const Shoutout = lazy(() => import("./pages/shoutout"));
+const ETC = lazy(() => import("./pages/etc"));
+const Admin = lazy(() => import("./pages/admin"));
+const Construction = lazy(() => import("./pages/construction"));
 
 const App = () => {
 	return (
 		<ThemeProvider>
 			<div className="App">
 				<Header />
-				<div className="page-content">
-				<Routes>
-					<Route path="/" element={<Home />} index />
-					<Route
-						path="/shoutout"
-						element={
-							<ScrollableContainer>
-								<Shoutout />
-							</ScrollableContainer>
-						}
-					/>
-					<Route
-						path="/about"
-						element={
-							<ScrollableContainer>
-								<About />
-							</ScrollableContainer>
-						}
-					/>
-					{/* <Route
-						path="/INF3012S/*"
-						element={
-							<ScrollableContainer>
-								<INF3012_Notes />
-							</ScrollableContainer>
-						}
-					/> */}
-					<Route
-						path="/etc"
-						element={
-							<ScrollableContainer>
-								<ETC />
-							</ScrollableContainer>
-						}
-					/>
-					<Route path="/admin" element={<ScrollableContainer><Admin /></ScrollableContainer>} />
-				<Route
-						path="redirect/tinkr"
-						element={
-							<Tinkr />
-						}
-					/>
-					<Route
-						path="*"
-						element={
-							<ScrollableContainer>
-								<Construction />
-							</ScrollableContainer>
-						}
-					/>
-				</Routes>
-				</div>
+				<main className="page-content">
+					<Suspense fallback={<div className="route-fallback" aria-hidden="true" />}>
+						<Routes>
+							<Route path="/" element={<Home />} index />
+							<Route path="/shoutout" element={<Shoutout />} />
+							<Route path="/about" element={<About />} />
+							<Route path="/etc" element={<ETC />} />
+							<Route path="/admin" element={<Admin />} />
+							<Route path="redirect/tinkr" element={<Tinkr />} />
+							<Route path="*" element={<Construction />} />
+						</Routes>
+					</Suspense>
+				</main>
 			</div>
 		</ThemeProvider>
 	);
@@ -76,7 +36,7 @@ const App = () => {
 
 function Tinkr() {
 	useEffect(() => {
-		window.location.href = 'https://linktr.ee/uct_tinkr';
+		window.location.href = "https://linktr.ee/uct_tinkr";
 	}, []);
 
 	return null;

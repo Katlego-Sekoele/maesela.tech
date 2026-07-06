@@ -1,28 +1,28 @@
+.about-greeting {
+	font-size: clamp(2rem, 5vw, 3rem);
+	line-height: 1.05;
+	margin: 0 0 var(--spacing-large);
+}
+
+.about-figure {
+	margin: 0 0 var(--spacing-large);
+}
+
 #photo {
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    padding: var(--padding-medium);
+	width: 100%;
+	max-height: 60dvh;
+	object-fit: cover;
+	object-position: top;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius);
+	display: block;
 }
 
-#main-container {
-    display: flex;
+.about-body {
+	font-size: 1.05rem;
+	line-height: 1.7;
 }
 
-#content {
-    padding: var(--padding-medium);
-}
-
-@media screen and (max-width: 48rem) {
-    #main-container {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #photo {
-        max-height: 50dvh;
-        object-position: 0% 10%;
-        max-width: 100%;
-    }
+.about-body p {
+	margin: 0 0 1.2em;
 }

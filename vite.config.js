@@ -323,6 +323,14 @@ export default defineConfig(({ mode }) => {
   return {
     build: {
       outDir: 'build',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            three: ['three'],
+            anime: ['animejs'],
+          },
+        },
+      },
     },
     plugins: [
       react(),

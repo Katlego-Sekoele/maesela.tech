@@ -1,31 +1,32 @@
 :root {
     color-scheme: light;
-    
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
 
-    --muted: 215 16% 47%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Warm editorial off-white canvas */
+    --background: 40 30% 98%;
+    --foreground: 30 8% 14%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    --muted: 35 6% 42%;
+    --muted-foreground: 35 6% 42%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --popover: 40 30% 98%;
+    --popover-foreground: 30 8% 14%;
 
-    --border-color: 0 0% 0%;
+    --border: 36 16% 86%;
+    --input: 36 16% 86%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --border-color: 30 8% 14%;
 
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
+    --card: 40 33% 99%;
+    --card-foreground: 30 8% 14%;
+
+    --primary: 30 8% 14%;
+    --primary-foreground: 40 30% 98%;
 
     --secondary: 240 100% 50%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 40 30% 98%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 40 24% 94%;
+    --accent-foreground: 30 8% 14%;
 
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
@@ -33,6 +34,15 @@
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
+
+    /* Typography */
+    --font-sans: 'BL', 'UncutSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Helvetica Neue', sans-serif;
+    --font-serif: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', 'Georgia', serif;
+    --font-mono: 'SF Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+    /* Reading measure for editorial columns */
+    --measure: 44rem;
 
     --padding-small: 0.5rem;
     --padding-medium: 1rem;
@@ -57,41 +67,79 @@
 
 [data-theme="dark"] {
     color-scheme: dark;
-    
-    --background: 220 13% 10%;
-    --foreground: 0 0% 98%;
 
-    --muted: 220 9% 68%;
-    --muted-foreground: 220 9% 72%;
+    /* Warm near-black to stay cohesive with the light editorial palette */
+    --background: 30 8% 8%;
+    --foreground: 40 18% 92%;
 
-    --accent: 220 13% 20%;
-    --accent-foreground: 0 0% 98%;
+    --muted: 36 8% 62%;
+    --muted-foreground: 36 8% 66%;
 
-    --popover: 220 13% 14%;
-    --popover-foreground: 0 0% 98%;
+    --accent: 30 7% 16%;
+    --accent-foreground: 40 18% 92%;
 
-    --border: 220 9% 30%;
-    --input: 220 9% 30%;
+    --popover: 30 8% 12%;
+    --popover-foreground: 40 18% 92%;
 
-    --border-color: 0 0% 100%;
+    --border: 33 7% 24%;
+    --input: 33 7% 24%;
 
-    --card: 220 13% 14%;
-    --card-foreground: 0 0% 98%;
+    --border-color: 40 18% 92%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 220 13% 14%;
+    --card: 30 8% 11%;
+    --card-foreground: 40 18% 92%;
 
-    --secondary: 240 100% 70%;
-    --secondary-foreground: 0 0% 98%;
+    --primary: 40 18% 92%;
+    --primary-foreground: 30 8% 11%;
+
+    --secondary: 240 100% 72%;
+    --secondary-foreground: 40 18% 92%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --ring: 220 9% 30%;
+    --ring: 33 7% 24%;
 }
 @font-face {
   font-family: 'UncutSans';
   src: url('./fonts/UncutSans-Regular.woff') format('woff')
+}
+
+/* Fraunces — serif display / editorial (SIL OFL) */
+@font-face {
+  font-family: 'Fraunces';
+  src: url('./fonts/Fraunces/latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('./fonts/Fraunces/latin-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('./fonts/Fraunces/latin-500-italic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('./fonts/Fraunces/latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('./fonts/Fraunces/latin-600-italic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -133,9 +181,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'BL', 'UncutSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: hsl(var(--background));
@@ -143,22 +189,63 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: var(--font-mono);
+}
+
+/* Editorial inline links — underlined, blue on hover (1chooo cue) */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
 }
 
 *>a:hover {
   color: hsl(var(--secondary)) !important;
 }
 
-a {
-  text-decoration: none;
-}
-
-a:visited {
-  color: hsl(var(--primary));
-}
-
 ul {
   list-style-type: "→ ";
+}
+
+/* ---- Editorial typography primitives ---- */
+
+/* Uppercase mono eyebrow label (Hermes / dotenvx cue) */
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  color: hsl(var(--muted));
+  margin: 0 0 var(--spacing-medium) 0;
+}
+
+/* Serif display heading */
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* An inline text link that shows the editorial underline by default */
+.u-link {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: hsl(var(--border));
+}
+.u-link:hover {
+  text-decoration-color: hsl(var(--secondary));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

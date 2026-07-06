@@ -1,65 +1,90 @@
+/* ---- Editorial two-track shell: fixed sidebar + scrolling content ---- */
 .App {
-  padding-left: var(--padding-medium);
-    padding-right: var(--padding-medium);
-    max-width: 100%;
-    height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(14rem, 18rem) 1fr;
+  grid-template-areas: "sidebar content";
+  height: 100dvh;
+  max-width: 100%;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 30dvh;
-}
 .page-content {
-  /* 
-    Calculate the height of the page content by subtracting the height of the header
-    headerHeight = 1.5rem + var(--padding-large) + var(--padding-medium) + 1rem
-  */
-  height: calc(100dvh - 1.5rem - var(--padding-large) - var(--padding-medium) - 2rem);
+  grid-area: content;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.route-fallback {
+  min-height: 100dvh;
+}
+
+/* Shared editorial page wrapper — centred reading measure */
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: var(--padding-large) var(--padding-large) 6rem;
+  box-sizing: border-box;
+}
+
+/* Wide pages (gallery grids etc.) can opt out of the narrow measure */
+.page.page--wide {
+  max-width: 72rem;
 }
 
 @media screen and (max-width: 48rem) {
+  .App {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar"
+      "content";
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
   .page-content {
-    /* 
-      Calculate the height of the page content by subtracting the height of the header
-      headerHeight = 1.5rem + var(--padding-large) + var(--padding-medium) + 3rem
-    */
-    height: calc(100dvh - 1.5rem - var(--padding-large) - var(--padding-medium) - 4rem);
+    height: auto;
+    overflow: visible;
+  }
+
+  .page {
+    padding: var(--padding-large) var(--padding-medium) 4rem;
   }
 }
 
+/* ---- Legacy helpers retained for pages not yet migrated ---- */
 .centered {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
   text-align: center;
-  }
-  
-        .stacked {
-          display: flex;
-          flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  }
-  
-  .full-height {
-    min-height: 100dvh;
-  }
-  
-  .socials {
-    display: flex;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
-  }
-  
-  .social-icon {
-    margin: 0 0.5em;
-    width: 2em;
-    height: 2em;
-    transition: filter var(--transition-duration) var(--transition-easing);
-  }
-  
-  [data-theme="dark"] .social-icon {
-    filter: invert(1);
-  }
+}
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-height {
+  min-height: 100dvh;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon {
+  margin: 0 0.5em;
+  width: 2em;
+  height: 2em;
+  transition: filter var(--transition-duration) var(--transition-easing);
+}
+
+[data-theme="dark"] .social-icon {
+  filter: invert(1);
+}

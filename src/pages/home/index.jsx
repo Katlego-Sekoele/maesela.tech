@@ -1,11 +1,11 @@
 import "../../App.css";
 import "./styles.css";
-import ScrollableContainer from "../../components/scrollable-container";
 import Experience from "../../components/experience";
 import { ShortBio, Socials } from "../../data";
 import Education from "../../components/education";
 import Certification from "../../components/certification";
 import Video from "../../components/video";
+import MksObject from "../../components/mks-object";
 import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 import { PortfolioExportControls } from "./portfolio-export-controls";
 
@@ -17,9 +17,17 @@ function Home() {
 		videos: sortedVideos,
 	} = getHomePortfolioSnapshot();
 
+	const interests = ShortBio.current.interests;
+	const interestList =
+		interests.length > 1
+			? `${interests.slice(0, -1).join(", ")} and ${interests[interests.length - 1]}`
+			: interests[0];
+
 	return (
-		<main id="main-container">
-			<ScrollableContainer className="scrollable-container">
+		<article className="page home">
+			<p className="eyebrow">Maesela Sekoele — Software Engineer</p>
+
+			<div className="home-intro serif-body">
 				<p>{ShortBio.bio}</p>
 				<p>
 					Currently {ShortBio.current.activity}{" "}
@@ -28,47 +36,23 @@ function Home() {
 					</i>
 					.
 				</p>
-				<p>My current obsessions are {ShortBio.current.interests.slice(0, -1).join(", ")} and {ShortBio.current.interests[ShortBio.current.interests.length - 1]}.</p>
-				<PortfolioExportControls />
-				<p className="text-links">
-					<a
-						href={Socials.github}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						GitHub
-					</a>
-					<a
-						href={Socials.linkedin}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						LinkedIn
-					</a>
-					<a
-						href={Socials.email}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Email
-					</a>
-					<a
-						href={Socials.spotify}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Spotify
-					</a>
-					<a
-						href={Socials.instagram}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Instagram
-					</a>
-				</p>
+				<p>My current obsessions are {interestList}.</p>
+			</div>
 
-				<h2 className="section-title">Experience</h2>
+			<p className="text-links">
+				<a className="u-link" href={Socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+				<a className="u-link" href={Socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+				<a className="u-link" href={Socials.email} target="_blank" rel="noopener noreferrer">Email</a>
+				<a className="u-link" href={Socials.spotify} target="_blank" rel="noopener noreferrer">Spotify</a>
+				<a className="u-link" href={Socials.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+			</p>
+
+			<MksObject />
+
+			<PortfolioExportControls />
+
+			<section className="home-section">
+				<h2 className="section-title serif">Experience</h2>
 				<div className="section">
 					{sortedExperiences.map((experience, index) => (
 						<Experience
@@ -84,7 +68,10 @@ function Home() {
 						/>
 					))}
 				</div>
-				<h2 className="section-title">Education</h2>
+			</section>
+
+			<section className="home-section">
+				<h2 className="section-title serif">Education</h2>
 				<div className="section">
 					{sortedEducations.map((experience, index) => (
 						<Education
@@ -102,9 +89,10 @@ function Home() {
 						/>
 					))}
 				</div>
-			</ScrollableContainer>
-			<ScrollableContainer className="scrollable-container">
-				<h2 className="section-title">Certifications</h2>
+			</section>
+
+			<section className="home-section">
+				<h2 className="section-title serif">Certifications</h2>
 				<div className="section">
 					{sortedCertifications.map((certification, index) => (
 						<Certification
@@ -118,7 +106,10 @@ function Home() {
 						/>
 					))}
 				</div>
-				<h2 className="section-title">Videos</h2>
+			</section>
+
+			<section className="home-section">
+				<h2 className="section-title serif">Videos</h2>
 				<div className="section">
 					{sortedVideos.map((video, index) => (
 						<Video
@@ -131,25 +122,8 @@ function Home() {
 						/>
 					))}
 				</div>
-				{/* <div>
-					<h2 className="section-title">Projects</h2>
-					<div className="desktop"
-						style={{
-							display: 'grid',
-							gridTemplateColumns: "repeat(3, auto)",
-							gridTemplateRows: `repeat(${Math.ceil(projectNames.length / 2)},auto)`,
-							gridAutoFlow: 'row',
-							gridGap: '0 1em'
-						}}
-					>
-						{projectNames.map((name, index) => (
-							<span key={index}>{name}</span>
-						))}
-					</div>
-					<Construction />
-				</div> */}
-			</ScrollableContainer>
-		</main>
+			</section>
+		</article>
 	);
 }
 

@@ -1,75 +1,78 @@
-#main-container {
-    display: flex;
-    align-items: flex-start;
-    align-content: flex-start;
-    height: 100%;
+/* ---- Editorial single-column home ---- */
+
+.home-intro {
+	font-family: var(--font-serif);
+	font-size: 1.15rem;
+	line-height: 1.6;
+	color: hsl(var(--foreground));
 }
 
-#main-container>*:first-child {
-    width: 40%;
-    border-right: 0.0625rem solid hsl(var(--border-color));
+.home-intro p {
+	margin: 0 0 1em;
 }
 
-#main-container>*:nth-child(2) {
-    width: 60%;
+.home-intro i {
+	font-style: italic;
 }
 
-@media screen and (max-width: 48rem) {
-    #main-container {
-        flex-direction: column;
-        height: fit-content;
-    }
-
-    #main-container>*:first-child {
-        flex-basis: 100%;
-        width: 100%;
-        border-right: none;
-        border-bottom: 0.0625rem solid hsl(var(--border-color));
-    }
-
-    #main-container>*:nth-child(2) {
-        flex-basis: 100%;
-        width: 100%;
-    }
-}
-.section-title {
-    border-bottom: 0.0625rem solid hsl(var(--border-color));
-    margin-bottom: 0em;
-}
-
-.section>* {
-    width: 95%;
-    border-bottom: 0.0625rem solid var(--border);
-    padding-top: 0.5em;
-}
-
-.section>*:last-child {
-    border-bottom: none;
-}
 .text-links {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 var(--spacing-medium);
+	margin: var(--spacing-large) 0;
 }
 
-.text-links>a {
-    color: hsl(var(--muted));
-    text-decoration: underline;
-    padding: 0 var(--spacing-medium) 0 0;
+.text-links > a {
+	color: hsl(var(--muted));
 }
+
+.text-links > a:hover {
+	color: hsl(var(--secondary)) !important;
+}
+
+/* Space around the 3D monogram card */
+.home .mks-object {
+	margin: var(--spacing-large) 0;
+}
+
+.home-section {
+	margin-top: 3rem;
+}
+
+.section-title {
+	font-size: 1.5rem;
+	padding-bottom: 0.25em;
+	margin: 0 0 var(--spacing-small);
+	border-bottom: 1px solid hsl(var(--border));
+}
+
+.section > * {
+	border-bottom: 1px solid hsl(var(--border));
+	padding: var(--spacing-medium) 0;
+}
+
+.section > *:last-child {
+	border-bottom: none;
+}
+
 .desktop {
-    display: block;
+	display: block;
 }
 
 .mobile {
-    display: none;
+	display: none;
 }
 
 @media screen and (max-width: 48rem) {
-    .desktop {
-        display: none;
-    }
+	.home-intro {
+		font-size: 1.05rem;
+	}
 
-    .mobile {
-        display: block;
-    }
+	.desktop {
+		display: none;
+	}
+
+	.mobile {
+		display: block;
+	}
 }

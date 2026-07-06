@@ -1,0 +1,19 @@
+.shoutout-title {
+	font-size: clamp(1.8rem, 4.5vw, 2.75rem);
+	line-height: 1.1;
+	margin: 0 0 var(--spacing-large);
+}
+
+.shoutout-lead {
+	font-family: var(--font-serif);
+	font-size: 1.1rem;
+	line-height: 1.6;
+	margin: 0 0 1.2em;
+}
+
+.shoutout-credits {
+	list-style: "→ ";
+	padding-left: 1.2em;
+	line-height: 2;
+	font-size: 1.05rem;
+}

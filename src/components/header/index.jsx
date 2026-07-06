@@ -1,27 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../images/logo.png";
 import "../../index.css";
 import "./styles.css";
 import ThemeToggle from "../theme-toggle";
 
+const NAV = [
+	{ to: "/", label: "home", end: true },
+	{ to: "/about", label: "about" },
+	{ to: "/shoutout", label: "shoutouts" },
+	{ to: "/etc", label: "etc" },
+];
+
 const Header = () => {
 	return (
-		<header id="header">
+		<header id="sidebar">
 			<Link to="/" id="name">
-				Maesela Sekoele
-				{
-					<img
-						id="logo-image"
-						src={Logo}
-						alt="illustration of Maesela's face"
-					/>
-				}
+				<img
+					id="logo-image"
+					src={Logo}
+					alt="illustration of Maesela's face"
+				/>
+				<span id="name-text">Maesela Sekoele</span>
 			</Link>
-			<div id="navigation">
-				<Link to="/">Home</Link>
-				<Link to="/about">Me</Link>
-				<Link to="/shoutout">Shoutouts</Link>
-				<Link to="/etc">Etc.</Link>
+
+			<nav id="navigation" aria-label="Primary">
+				{NAV.map(({ to, label, end }) => (
+					<NavLink
+						key={to}
+						to={to}
+						end={end}
+						className={({ isActive }) =>
+							`nav-link ${isActive ? "is-active" : ""}`
+						}
+					>
+						{label}
+					</NavLink>
+				))}
+			</nav>
+
+			<div id="sidebar-footer">
 				<ThemeToggle />
 			</div>
 		</header>
@@ -29,4 +46,3 @@ const Header = () => {
 };
 
 export default Header;
-

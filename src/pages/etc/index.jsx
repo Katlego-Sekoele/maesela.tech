@@ -20,18 +20,18 @@ export default function ETC() {
   };
 
   return (
-    <>
+    <div className="page page--wide etc-page">
       <ArticleList />
       {token ? (
         <PhotoGallery token={token} onAuthExpired={handleAuthExpired} />
       ) : (
         <div className="gallery-wrapper">
           <div className="gallery-header">
-            <h1 className="gallery-title">photography</h1>
+            <h1 className="gallery-title serif">photography</h1>
           </div>
           <GalleryAuth onSuccess={setToken} />
         </div>
       )}
-    </>
+    </div>
   );
 }

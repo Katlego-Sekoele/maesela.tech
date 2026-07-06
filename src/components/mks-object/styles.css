@@ -1,0 +1,29 @@
+.mks-object {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius);
+	background:
+		radial-gradient(
+			120% 120% at 50% 20%,
+			hsl(var(--accent)) 0%,
+			hsl(var(--card)) 70%
+		);
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mks-canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.mks-fallback {
+	width: 70%;
+	height: auto;
+	opacity: 0.9;
+}

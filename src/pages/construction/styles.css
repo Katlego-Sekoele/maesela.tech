@@ -1,0 +1,19 @@
+.construction {
+	text-align: center;
+	padding-top: 4rem;
+}
+
+.construction-art {
+	width: min(320px, 60%);
+	height: auto;
+	margin: 0 auto var(--spacing-large);
+}
+
+.construction-title {
+	font-size: clamp(1.8rem, 5vw, 2.5rem);
+	margin: 0 0 var(--spacing-medium);
+}
+
+.construction .socials {
+	margin-top: var(--spacing-large);
+}
