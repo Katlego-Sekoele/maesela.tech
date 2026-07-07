@@ -1,5 +1,4 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -7,7 +6,7 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
 import { Users } from './collections/Users'
-import { Media } from './collections/Media'
+import { Photos } from './collections/Photos'
 import { Experiences } from './collections/Experiences'
 import { Educations } from './collections/Educations'
 import { Certifications } from './collections/Certifications'
@@ -22,11 +21,6 @@ import { Socials } from './globals/Socials'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-// Only enable Vercel Blob when a real token is present (production / when pulled
-// from Vercel). Locally we fall back to Payload's default disk storage.
-const blobToken = process.env.BLOB_READ_WRITE_TOKEN
-const useBlob = Boolean(blobToken && blobToken.startsWith('vercel_blob_rw_'))
-
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -36,7 +30,7 @@ export default buildConfig({
   },
   collections: [
     Users,
-    Media,
+    Photos,
     Experiences,
     Educations,
     Certifications,
@@ -57,17 +51,4 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: [
-    ...(useBlob
-      ? [
-          vercelBlobStorage({
-            enabled: true,
-            collections: {
-              media: true,
-            },
-            token: blobToken as string,
-          }),
-        ]
-      : []),
-  ],
 })

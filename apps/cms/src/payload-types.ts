@@ -68,7 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
-    media: Media;
+    photos: Photo;
     experiences: Experience;
     educations: Education;
     certifications: Certification;
@@ -84,7 +84,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
+    photos: PhotosSelect<false> | PhotosSelect<true>;
     experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
     educations: EducationsSelect<false> | EducationsSelect<true>;
     certifications: CertificationsSelect<false> | CertificationsSelect<true>;
@@ -167,27 +167,21 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "photos".
  */
-export interface Media {
+export interface Photo {
   id: number;
-  alt: string;
   /**
-   * When enabled, this image is hidden from the public site and only shown after the gallery password is entered.
+   * Blob object path, e.g. etc/photo.jpg
+   */
+  pathname: string;
+  alt?: string | null;
+  /**
+   * When enabled, this photo is only shown after the gallery password is entered.
    */
   sensitive?: boolean | null;
-  caption?: string | null;
   updatedAt: string;
   createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -326,7 +320,11 @@ export interface Article {
 export interface GalleryPassword {
   id: number;
   label: string;
-  hash: string;
+  /**
+   * Set/replace the password. Stored only as a bcrypt hash.
+   */
+  password?: string | null;
+  hash?: string | null;
   revokedAt?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -360,8 +358,8 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
-        relationTo: 'media';
-        value: number | Media;
+        relationTo: 'photos';
+        value: number | Photo;
       } | null)
     | ({
         relationTo: 'experiences';
@@ -458,23 +456,14 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
+ * via the `definition` "photos_select".
  */
-export interface MediaSelect<T extends boolean = true> {
+export interface PhotosSelect<T extends boolean = true> {
+  pathname?: T;
   alt?: T;
   sensitive?: T;
-  caption?: T;
   updatedAt?: T;
   createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -594,6 +583,7 @@ export interface ArticlesSelect<T extends boolean = true> {
  */
 export interface GalleryPasswordsSelect<T extends boolean = true> {
   label?: T;
+  password?: T;
   hash?: T;
   revokedAt?: T;
   updatedAt?: T;
