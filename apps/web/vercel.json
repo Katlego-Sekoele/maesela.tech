@@ -1,5 +1,6 @@
 {
-  "buildCommand": "npm run build",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm build",
   "outputDirectory": "build",
   "headers": [
     {
@@ -7,28 +8,7 @@
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive, noimageindex" }
       ]
-    },
-    {
-      "source": "/api/(photo|photos)",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive, noimageindex" }
-      ]
-    },
-    {
-      "source": "/admin",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
-      ]
-    },
-    {
-      "source": "/api/admin/(.*)",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
-      ]
     }
   ],
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
