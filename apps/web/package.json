@@ -30,7 +30,9 @@
 	},
 	"scripts": {
 		"start": "vite",
+		"prebuild": "node scripts/fetch-content.mjs",
 		"build": "vite build",
+		"content:fetch": "node scripts/fetch-content.mjs",
 		"dev": "vite preview",
 		"photos:sanitize": "node scripts/sanitize-photos.mjs"
 	},

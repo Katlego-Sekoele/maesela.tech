@@ -3,8 +3,14 @@
   "configurations": [
     {
       "name": "preview",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "4173", "--strictPort"],
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@maesela/web", "exec", "vite", "preview", "--port", "4173", "--strictPort"],
+      "port": 4173
+    },
+    {
+      "name": "web-dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@maesela/web", "exec", "vite", "--port", "4173", "--strictPort"],
       "port": 4173
     }
   ]

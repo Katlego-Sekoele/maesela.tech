@@ -1,0 +1,401 @@
+{
+  "experiences": [
+    {
+      "company": "BBD Software",
+      "companyLink": "https://www.bbdsoftware.com/",
+      "position": "Junior Software Engineer",
+      "startDate": "2025-01-13T00:00:00.000Z",
+      "endDate": null,
+      "description": "Build features end-to-end on a large enterprise HR & workforce-management platform (Nx monorepo) serving ~1,000 employees, across the full stack.",
+      "current": true,
+      "shown": true,
+      "keyPoints": [
+        "Owned a greenfield internal-mobility product: relational schema, REST APIs, a configurable status state machine, multi-level approval workflows, audit trail, and queue-driven email",
+        "Full-stack across Angular, Node.js/Express, and SQL Server (migrations, stored procedures, triggers, point-in-time analytics), deployed via Docker on Azure",
+        "Built HR analytics dashboards and a chunked bulk-import pipeline (Azure blob/queue triggers); integrated the enterprise directory via Microsoft Graph API",
+        "Built custom AI dev workflows (Cursor, Claude Code, MCP) automating ticket creation and release notes"
+      ]
+    },
+    {
+      "company": "Nubee",
+      "companyLink": "https://www.nubee.co.za/",
+      "position": "Software Developer",
+      "startDate": "2024-03-01T00:00:00.000Z",
+      "endDate": "2024-05-01T00:00:00.000Z",
+      "description": "Worked on a driving school web app. Technologies & skills:",
+      "current": false,
+      "shown": true,
+      "keyPoints": [
+        "React / Node.js / Express / PostgreSQL",
+        "Google Cloud Platform",
+        "Docker / CI/CD"
+      ]
+    },
+    {
+      "company": "BBD Software",
+      "companyLink": "https://www.bbdsoftware.com/",
+      "position": "Bursar",
+      "startDate": "2021-03-01T00:00:00.000Z",
+      "endDate": "2024-10-31T00:00:00.000Z",
+      "description": "Bursary recipient since 2021. Opportunities to engage in vacation work and mentorship. Notably learnt:",
+      "current": false,
+      "shown": true,
+      "keyPoints": [
+        "TypeScript / Angular / React",
+        "Node.js / Express / REST / MongoDB / MySQL",
+        "Technical writing / Agile / Git"
+      ]
+    },
+    {
+      "company": "Axone Network (UCT Financial Hub of Innovation)",
+      "companyLink": "https://www.axone.network/",
+      "position": "Software Developer",
+      "startDate": "2023-08-01T00:00:00.000Z",
+      "endDate": "2023-12-31T00:00:00.000Z",
+      "description": "Worked on illustration, profile, and generative AI features for a social writing platform. \nTech stack:",
+      "current": false,
+      "shown": true,
+      "keyPoints": [
+        "SvelteKit",
+        "TypeScript",
+        "MongoDB"
+      ]
+    },
+    {
+      "company": "University of Cape Town",
+      "companyLink": "https://www.uct.ac.za/",
+      "position": "Tutor",
+      "startDate": "2022-04-01T00:00:00.000Z",
+      "endDate": "2023-11-30T00:00:00.000Z",
+      "description": "Tutored Computer Science courses, assisted students with assignments, and invigilated tests.",
+      "current": false,
+      "shown": true,
+      "keyPoints": []
+    },
+    {
+      "company": "Self-Employed",
+      "companyLink": null,
+      "position": "Private Tutor",
+      "startDate": "2021-03-01T00:00:00.000Z",
+      "endDate": "2023-06-30T00:00:00.000Z",
+      "description": "Tutored IEB Information Technology",
+      "current": false,
+      "shown": true,
+      "keyPoints": []
+    },
+    {
+      "company": "Genius Premium Tuition",
+      "companyLink": "https://www.geniuspremiumtuition.com/",
+      "position": "Private Tutor",
+      "startDate": "2021-08-01T00:00:00.000Z",
+      "endDate": "2022-06-30T00:00:00.000Z",
+      "description": "Tutored IEB and Cambridge Mathematics, Computer Science, Computer Applications Technology, and Information Technology.",
+      "current": false,
+      "shown": true,
+      "keyPoints": []
+    },
+    {
+      "company": "Overland Ferndale",
+      "companyLink": "https://overlandsa.co.za/",
+      "position": "Shop Assistant",
+      "startDate": "2021-02-01T00:00:00.000Z",
+      "endDate": "2021-02-28T00:00:00.000Z",
+      "description": "Duties included POS operations, assisting customers with queries, and stock management.",
+      "current": false,
+      "shown": true,
+      "keyPoints": []
+    }
+  ],
+  "educations": [
+    {
+      "company": "University of Cape Town",
+      "companyLink": "https://www.uct.ac.za/",
+      "position": "Bachelor of Commerce Honours in Information Systems",
+      "startDate": "2024-01-28T00:00:00.000Z",
+      "endDate": "2024-10-31T00:00:00.000Z",
+      "graduationDate": "2025-03-21T00:00:00.000Z",
+      "grade": 72.14,
+      "current": false,
+      "shown": true,
+      "keyPoints": [
+        "Cybersecurity, Privacy, and Ethics",
+        "Sentiment Analysis of Financial News",
+        "Personalisation Engine for an e-commerce and digital content cross-platform app",
+        "IT Project Management"
+      ]
+    },
+    {
+      "company": "University of Cape Town",
+      "companyLink": "https://www.uct.ac.za/",
+      "position": "Bachelor of Science in Computer Science and Information Systems",
+      "startDate": "2021-03-15T00:00:00.000Z",
+      "endDate": "2021-11-30T00:00:00.000Z",
+      "graduationDate": "2024-03-21T00:00:00.000Z",
+      "grade": 79.49,
+      "current": false,
+      "shown": true,
+      "keyPoints": [
+        "Intro Programming / OOP / Managerial Finance",
+        "Databases / Data Structures",
+        "Systems Analysis / Systems Design",
+        "Mobile Development / Computer Architecture / Concurrent Programming",
+        "IT Project Management / Business Intelligence / Business Process Management / Enterprise Systems / e-Commerce",
+        "Operating Systems / Networks / Software Design / Algorithms"
+      ]
+    },
+    {
+      "company": "Curro Aurora High School",
+      "companyLink": "https://www.curro.co.za/schools/curro-aurora-high-school",
+      "position": "IEB Matriculation",
+      "startDate": "2016-01-15T00:00:00.000Z",
+      "endDate": "2020-11-30T00:00:00.000Z",
+      "graduationDate": "2021-02-28T00:00:00.000Z",
+      "grade": 82.28,
+      "current": false,
+      "shown": true,
+      "keyPoints": [
+        "English Home Language",
+        "Afrikaans First Additional Language",
+        "Mathematics",
+        "Physical Sciences",
+        "Information Technology",
+        "Biology",
+        "Life Orientation"
+      ]
+    },
+    {
+      "company": "University of Cape Town",
+      "companyLink": "https://www.uct.ac.za/",
+      "position": "MPhil specialising in Financial Technology",
+      "startDate": "2025-02-01T00:00:00.000Z",
+      "endDate": null,
+      "graduationDate": "2027-12-15T00:00:00.000Z",
+      "grade": null,
+      "current": true,
+      "shown": true,
+      "keyPoints": [
+        "Financial Software Engineering",
+        "Fintech & Cryptocurrencies",
+        "Databases",
+        "Supervised Learning"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Developer Associate (DVA-C02)",
+      "detailsLink": "https://aws.amazon.com/certification/certified-developer-associate/",
+      "verificationLink": "https://www.credly.com/badges/c96ebfbf-d433-4270-a365-11d676b51ceb/linked_in_profile",
+      "description": "AWS Certified Developer - Associate showcases skills and knowledge in developing, optimizing, packaging, and deploying applications, using CI/CD workflows, and identifying and resolving application issues. This certification is a good starting point on the AWS Certification journey for individuals in IT or cloud developer job roles.",
+      "acquiredDate": "2025-11-18T00:00:00.000Z",
+      "expiryDate": "2028-11-18T00:00:00.000Z",
+      "shown": true
+    }
+  ],
+  "videos": [
+    {
+      "title": "Tetris in a PDF?",
+      "link": "https://youtu.be/0fo0-9t1558?si=aZnxgdN2YSisBTDj",
+      "description": "What if a \"digital piece of paper\" wasn't so passive after all? In this talk, we explore how PDFs are far more powerful than most of us realise. It is powerful enough to run interactive games like Tetris. What started as a viral tweet turned into a deep dive into the internals of the PDF format: how PDFs are structured, how they support interactivity, and how JavaScript and form elements can be combined to create fully interactive experiences.",
+      "publishedDate": "2025-12-22T00:00:00.000Z",
+      "thumbnail": null,
+      "shown": true
+    }
+  ],
+  "projects": [
+    {
+      "name": "Maesela.tech",
+      "descriptionParagraphs": [
+        "My personal portfolio site — the one you're on now. Built with React and Vite and deployed on Vercel.",
+        "An editorial, type-led design with light/dark theming. Nothing too fancy, but I like it."
+      ],
+      "links": [
+        {
+          "name": "GitHub",
+          "link": "https://github.com/Katlego-Sekoele/maesela.tech"
+        },
+        {
+          "name": "Hosted",
+          "link": "https://www.maesela.tech"
+        }
+      ],
+      "primaryLink": "https://www.maesela.tech",
+      "shown": true
+    },
+    {
+      "name": "HERP",
+      "descriptionParagraphs": [
+        "A content-driven web app built with Next.js and TypeScript, backed by Contentful as a headless CMS.",
+        "Uses a shadcn/ui + Radix component system, TanStack Query for data fetching, and Recharts for data visualisation."
+      ],
+      "links": [
+        {
+          "name": "GitHub",
+          "link": "https://github.com/Katlego-Sekoele/herp"
+        },
+        {
+          "name": "Hosted",
+          "link": "https://herp-six.vercel.app"
+        }
+      ],
+      "primaryLink": "https://herp-six.vercel.app",
+      "shown": true
+    },
+    {
+      "name": "Financial News Sentiment Analysis",
+      "descriptionParagraphs": [
+        "My honours research project: a full-stack financial-news sentiment analysis tool built following a Design Science Research methodology.",
+        "A Python/Flask API scrapes headlines (BeautifulSoup) and runs an NLTK pipeline (tokenisation, lemmatisation, stop-word removal) before classification. I trained and compared SVM (scikit-learn), word embeddings (gensim), and neural networks (TensorFlow/Keras) on the Financial PhraseBank, evaluating with F1, MCC, and non-parametric significance tests. Predictions surface in a Next.js + TypeScript dashboard."
+      ],
+      "links": [
+        {
+          "name": "GitHub",
+          "link": "https://github.com/Katlego-Sekoele/Automatic-Financial-News-Sentiment-Analysis"
+        }
+      ],
+      "primaryLink": "https://github.com/Katlego-Sekoele/Automatic-Financial-News-Sentiment-Analysis",
+      "shown": true
+    },
+    {
+      "name": "Boids Flocking Simulation",
+      "descriptionParagraphs": [
+        "A Java + JavaFX implementation of Craig Reynolds' \"Boids\" algorithm, simulating the emergent flocking of birds, herds, and schools.",
+        "Built in a team of three, planned extensively with UML and managed with a Kanban approach in Notion."
+      ],
+      "links": [],
+      "primaryLink": null,
+      "shown": true
+    },
+    {
+      "name": "Business Process Improvement for SAPS",
+      "descriptionParagraphs": [
+        "A business-process management and improvement consulting project for the South African Police Service and the Department of Public Service and Administration.",
+        "Worked in a team of six to analyse a business process and propose improvements; the report earned recognition from EY for its quality and suggestions."
+      ],
+      "links": [],
+      "primaryLink": null,
+      "shown": true
+    },
+    {
+      "name": "Election Platform",
+      "descriptionParagraphs": [
+        "A voting/election web platform with a React (Create React App) frontend and an Express backend.",
+        "Uses Supabase for authentication, including email-confirmation flows."
+      ],
+      "links": [
+        {
+          "name": "GitHub",
+          "link": "https://github.com/Katlego-Sekoele/election-platform"
+        },
+        {
+          "name": "Hosted",
+          "link": "https://election-platform.vercel.app"
+        }
+      ],
+      "primaryLink": "https://election-platform.vercel.app",
+      "shown": true
+    },
+    {
+      "name": "Gigs",
+      "descriptionParagraphs": [
+        "A student services marketplace built with Next.js — a platform where students can buy and sell services from one another.",
+        "A playground project for learning React and Next.js; largely a work in progress."
+      ],
+      "links": [
+        {
+          "name": "GitHub",
+          "link": "https://github.com/Katlego-Sekoele/gigs"
+        },
+        {
+          "name": "Hosted",
+          "link": "https://gigs-silk.vercel.app"
+        }
+      ],
+      "primaryLink": "https://gigs-silk.vercel.app",
+      "shown": true
+    },
+    {
+      "name": "Home Goods Store",
+      "descriptionParagraphs": [
+        "An e-commerce site for home goods, built with Angular as a way to learn and explore the framework."
+      ],
+      "links": [
+        {
+          "name": "GitHub",
+          "link": "https://github.com/Katlego-Sekoele/HomeGoodsStore"
+        },
+        {
+          "name": "Hosted",
+          "link": "https://inf3014f-tutorial-2.onrender.com/"
+        }
+      ],
+      "primaryLink": "https://inf3014f-tutorial-2.onrender.com/",
+      "shown": true
+    },
+    {
+      "name": "TOKDOC Protocol",
+      "descriptionParagraphs": [
+        "A custom application-layer protocol designed and implemented in a Python client-server application — a first venture into socket programming and protocol design.",
+        "A team project with Owethu Novuka and Tiyani Mhlarhi; I designed and built the client."
+      ],
+      "links": [
+        {
+          "name": "Client",
+          "link": "https://github.com/Katlego-Sekoele/TOKDOC-Protocol-Client"
+        },
+        {
+          "name": "Server",
+          "link": "https://github.com/Katlego-Sekoele/TOKDOC-Protocol-Server"
+        }
+      ],
+      "primaryLink": "https://github.com/Katlego-Sekoele/TOKDOC-Protocol-Client",
+      "shown": true
+    },
+    {
+      "name": "BBD Water Pipe",
+      "descriptionParagraphs": [
+        "A browser-based pipe-connecting puzzle game built with vanilla HTML, CSS, and JavaScript."
+      ],
+      "links": [
+        {
+          "name": "GitHub",
+          "link": "https://github.com/Katlego-Sekoele/BBD_Water_Pipe"
+        }
+      ],
+      "primaryLink": "https://github.com/Katlego-Sekoele/BBD_Water_Pipe",
+      "shown": true
+    }
+  ],
+  "articles": [],
+  "shortBio": {
+    "bio": "Hi! 👋🏾 I'm Maesela — an impact-driven full-stack software engineer building on a large enterprise HR & workforce-management platform. I love the intersection of information, people, processes, and technology, and owning features end-to-end: from SQL Server schema to Node.js/TypeScript APIs to the Angular UI.",
+    "current": {
+      "activity": "working as a",
+      "position": "Junior Software Engineer",
+      "company": "BBD Software",
+      "interests": [
+        "Agentic AI",
+        "Financial technology",
+        "Full-stack web development"
+      ]
+    }
+  },
+  "about": {
+    "greeting": "Hey there! 👋🏾 I'm Maesela.",
+    "tldr": "I like to build things with code focusing on how technology, people, and processes intersect.",
+    "paragraphs": [
+      "I am passionate about using my knowledge of computer science and business computing to make a positive impact. With a strong affinity for learning and a passion for technology, I am a firm believer in the power of continuous learning and improvement. I follow the CL/CI (continuous learning and continuous improvement) framework (totally made up), which guides me in my pursuit of personal and professional growth.",
+      "In addition to my passion for technology and education, I am also interested in gaming, music festivals, and to a lesser extent, fashion.",
+      "Throughout my academic career, I have proven myself to be a strong academic achiever and a self-motivated student. I am proud to have been on the Dean's Merit List for the entire duration of my undergraduate degree and completed my honours degree with a distinction in my research project. I am not afraid to ask questions, seek out new challenges, and learn from my peers and those more knowledgeable than I am.",
+      "A highlight along the way: my team won the national Discovery GradHack (R100 000 prize), selected among 50 finalists from universities across South Africa, with SafeRoute — a data-driven, real-time safe-navigation app that pre-plans routes avoiding load-shedding and crime hotspots.",
+      "I am excited to see where my career will take me and to continue pursuing my passion for software engineering."
+    ]
+  },
+  "socials": {
+    "linkedin": "https://www.linkedin.com/in/maesela/",
+    "github": "https://github.com/katlego-sekoele",
+    "email": "mailto:sekoelekatlego@gmail.com",
+    "spotify": "https://open.spotify.com/user/21zhsmy8v3xkx5o73patd9r0i",
+    "instagram": "https://www.instagram.com/katlego.sekoele/"
+  }
+}
