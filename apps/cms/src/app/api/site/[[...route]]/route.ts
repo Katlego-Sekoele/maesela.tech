@@ -29,7 +29,14 @@ app.use(
   }),
 )
 
-const hasSession = async (c: any) => verifyGallerySession(getCookie(c, GALLERY_COOKIE))
+// Accept the gallery token from a Bearer header (fetch), a `t` query param
+// (so <img> tags work cross-origin without cookies), or the session cookie.
+const tokenFromReq = (c: any): string | undefined => {
+  const auth = c.req.header('authorization')
+  if (auth?.startsWith('Bearer ')) return auth.slice(7)
+  return c.req.query('t') || getCookie(c, GALLERY_COOKIE)
+}
+const hasSession = async (c: any) => verifyGallerySession(tokenFromReq(c))
 
 // ---- Gallery auth ----
 app.get('/gallery/status', async (c) => c.json({ authed: await hasSession(c) }))
@@ -57,7 +64,9 @@ app.post('/gallery/auth', async (c) => {
         path: '/',
         maxAge: 8 * 60 * 60,
       })
-      return c.json({ ok: true })
+      // Also return the token so the (cross-origin) web app can send it as a
+      // Bearer header / image query param without relying on third-party cookies.
+      return c.json({ ok: true, token })
     }
   }
   return c.json({ error: 'Invalid password' }, 401)
@@ -81,13 +90,12 @@ app.get('/photos', async (c) => {
     depth: 0,
   })
 
-  // The Blob store is private, so every image is served through the proxy
-  // (which streams bytes server-side and gates sensitive photos by session).
+  // The Blob store is private, so every image is streamed through the proxy.
+  // The web app builds the proxy URL (adding the token for sensitive photos).
   const photos = (result.docs as any[]).map((p) => ({
     id: p.id,
     alt: p.alt || '',
     sensitive: !!p.sensitive,
-    url: `/api/site/photo?id=${p.id}`,
   }))
 
   return c.json({

@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { adminOnly, anyone } from '../access'
+import { adminOnly } from '../access'
 
 /**
  * Gallery photo metadata. The image bytes live in Vercel Blob under `etc/`
@@ -9,7 +9,9 @@ import { adminOnly, anyone } from '../access'
  */
 export const Photos: CollectionConfig = {
   slug: 'photos',
-  access: { read: anyone, create: adminOnly, update: adminOnly, delete: adminOnly },
+  // Not publicly listable via REST — the public site reads photos through the
+  // Hono /api/site/photos endpoint (which enforces the sensitive/session gate).
+  access: { read: adminOnly, create: adminOnly, update: adminOnly, delete: adminOnly },
   admin: {
     useAsTitle: 'alt',
     defaultColumns: ['alt', 'sensitive', 'pathname'],

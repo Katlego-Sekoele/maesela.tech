@@ -19,17 +19,24 @@ export default function ETC() {
     setToken(null);
   };
 
+  const handleUnlock = (t) => {
+    sessionStorage.setItem('gallery_token', t);
+    setToken(t);
+  };
+
   return (
     <div className="page page--wide etc-page">
       <ArticleList />
-      {token ? (
-        <PhotoGallery token={token} onAuthExpired={handleAuthExpired} />
-      ) : (
-        <div className="gallery-wrapper">
-          <div className="gallery-header">
-            <h1 className="gallery-title serif">photography</h1>
-          </div>
-          <GalleryAuth onSuccess={setToken} />
+
+      {/* Public photos show to everyone; the password unlocks sensitive ones. */}
+      <PhotoGallery token={token} onAuthExpired={handleAuthExpired} />
+
+      {!token && (
+        <div className="gallery-unlock">
+          <p className="gallery-unlock__label muted-text">
+            Some photos are private. Enter the gallery password to see them.
+          </p>
+          <GalleryAuth onSuccess={handleUnlock} />
         </div>
       )}
     </div>

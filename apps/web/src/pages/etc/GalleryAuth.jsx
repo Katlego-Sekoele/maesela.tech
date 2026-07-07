@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CMS_URL } from '../../config';
 
 export default function GalleryAuth({ onSuccess }) {
   const [password, setPassword] = useState('');
@@ -10,7 +11,7 @@ export default function GalleryAuth({ onSuccess }) {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/gallery', {
+      const res = await fetch(`${CMS_URL}/api/site/gallery/auth`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),

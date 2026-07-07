@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
+import { CMS_URL } from '../../config';
 
 const fmt = new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' });
 
 function formatDate(dateStr) {
-  return fmt.format(new Date(dateStr + 'T12:00:00'));
+  if (!dateStr) return '';
+  return fmt.format(new Date(dateStr));
 }
 
 export default function ArticleList() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch('/api/articles')
+    fetch(`${CMS_URL}/api/articles?limit=200&sort=-readDate&depth=0`)
       .then((r) => r.json())
-      .then((data) => setArticles(data.articles ?? []))
+      .then((data) => setArticles(data.docs ?? []))
       .catch(() => {});
   }, []);
 

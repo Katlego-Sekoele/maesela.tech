@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { CMS_URL } from '../../config';
 import './styles.css';
 
 const DENSITIES = [
@@ -90,27 +91,24 @@ function buildMosaicLayout(items, cols) {
   return layout;
 }
 
-function proxyUrl(photo, width, quality) {
-  const params = new URLSearchParams({
-    id: photo.photoId,
-    exp: String(photo.exp),
-    sig: photo.sig,
-    v: PHOTO_PROXY_VERSION,
-  });
+function proxyUrl(photo, width, quality, token) {
+  const params = new URLSearchParams({ id: String(photo.id), v: PHOTO_PROXY_VERSION });
   if (width) params.set('w', String(width));
   if (quality) params.set('q', String(quality));
-  return `/api/photo?${params}`;
+  // Sensitive photos need the gallery token in the URL (image tags can't send headers).
+  if (photo.sensitive && token) params.set('t', token);
+  return `${CMS_URL}/api/site/photo?${params}`;
 }
 
-function PhotoCard({ photo, index, tile }) {
+function PhotoCard({ photo, index, tile, token }) {
   const [requestedStage, setRequestedStage] = useState(0);
   const [loadedStages, setLoadedStages] = useState([false, false, false]);
   const lastStage = 2;
   const stageSrc = useMemo(() => ([
-    proxyUrl(photo, 140, 24),
-    proxyUrl(photo, 460, 52),
-    proxyUrl(photo, THUMB_WIDTH, 84),
-  ]), [photo.photoId, photo.exp, photo.sig]);
+    proxyUrl(photo, 140, 24, token),
+    proxyUrl(photo, 460, 52, token),
+    proxyUrl(photo, THUMB_WIDTH, 84, token),
+  ]), [photo.id, photo.sensitive, token]);
 
   useEffect(() => {
     setRequestedStage(0);
@@ -177,8 +175,8 @@ export default function PhotoGallery({ token, onAuthExpired }) {
       offset: String(offset),
       limit: String(PAGE_SIZE),
     });
-    const response = await fetch(`/api/photos?${params.toString()}`, {
-      headers: { Authorization: `Bearer ${token}` },
+    const response = await fetch(`${CMS_URL}/api/site/photos?${params.toString()}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
     });
     if (response.status === 401) {
       sessionStorage.removeItem('gallery_token');
@@ -193,9 +191,11 @@ export default function PhotoGallery({ token, onAuthExpired }) {
     const nextPhotos = payload.photos ?? [];
     setPhotos((prev) => (offset === 0 ? nextPhotos : [...prev, ...nextPhotos]));
     setHasMore(Boolean(payload.hasMore));
-  }, []);
+  }, [token, onAuthExpired]);
 
   useEffect(() => {
+    setLoading(true);
+    setError(null);
     loadPage(0)
       .catch(() => setError('Could not load photos.'))
       .finally(() => setLoading(false));
@@ -275,6 +275,7 @@ export default function PhotoGallery({ token, onAuthExpired }) {
             photo={photo}
             index={index}
             tile={layout.get(photo.id)}
+            token={token}
           />
         ))}
       </motion.div>
