@@ -1,5 +1,5 @@
 import "../home/styles.css";
-import PageHeader from "../../components/page-header";
+import SectionLayout from "../../components/section-layout";
 import Experience from "../../components/experience";
 import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 
@@ -7,12 +7,12 @@ export default function ExperiencePage() {
 	const { experiences } = getHomePortfolioSnapshot();
 
 	return (
-		<article className="page">
-			<PageHeader
-				eyebrow="Work"
-				title="Experience"
-				lead="Where I've built software — and what I shipped."
-			/>
+		<SectionLayout
+			eyebrow="Work"
+			title="Experience"
+			lead="Where I've built software — and what I shipped."
+			image="/cards/experience.png"
+		>
 			<div className="section">
 				{experiences.map((experience, index) => (
 					<Experience
@@ -28,6 +28,6 @@ export default function ExperiencePage() {
 					/>
 				))}
 			</div>
-		</article>
+		</SectionLayout>
 	);
 }

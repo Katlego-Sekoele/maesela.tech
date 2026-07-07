@@ -1,5 +1,5 @@
 import "../home/styles.css";
-import PageHeader from "../../components/page-header";
+import SectionLayout from "../../components/section-layout";
 import Project from "../../components/project";
 import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 
@@ -7,12 +7,12 @@ export default function ProjectsPage() {
 	const { projects } = getHomePortfolioSnapshot();
 
 	return (
-		<article className="page">
-			<PageHeader
-				eyebrow="Things I've built"
-				title="Projects"
-				lead="Side projects, experiments, and coursework — most of it on GitHub."
-			/>
+		<SectionLayout
+			eyebrow="Things I've built"
+			title="Projects"
+			lead="Side projects, experiments, and coursework — most of it on GitHub."
+			image="/cards/projects.png"
+		>
 			<div className="section">
 				{projects.map((project, index) => (
 					<Project
@@ -24,6 +24,6 @@ export default function ProjectsPage() {
 					/>
 				))}
 			</div>
-		</article>
+		</SectionLayout>
 	);
 }

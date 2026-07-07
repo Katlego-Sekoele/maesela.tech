@@ -1,5 +1,5 @@
 import "../home/styles.css";
-import PageHeader from "../../components/page-header";
+import SectionLayout from "../../components/section-layout";
 import Video from "../../components/video";
 import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 
@@ -7,12 +7,12 @@ export default function TalksPage() {
 	const { videos } = getHomePortfolioSnapshot();
 
 	return (
-		<article className="page">
-			<PageHeader
-				eyebrow="Speaking"
-				title="Talks"
-				lead="Talks I've given and things I've explained on camera."
-			/>
+		<SectionLayout
+			eyebrow="Speaking"
+			title="Talks"
+			lead="Talks I've given and things I've explained on camera."
+			image="/cards/talks.png"
+		>
 			<div className="section">
 				{videos.map((video, index) => (
 					<Video
@@ -25,6 +25,6 @@ export default function TalksPage() {
 					/>
 				))}
 			</div>
-		</article>
+		</SectionLayout>
 	);
 }

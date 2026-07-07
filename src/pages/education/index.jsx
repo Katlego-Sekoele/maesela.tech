@@ -1,5 +1,5 @@
 import "../home/styles.css";
-import PageHeader from "../../components/page-header";
+import SectionLayout from "../../components/section-layout";
 import Education from "../../components/education";
 import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 
@@ -7,12 +7,12 @@ export default function EducationPage() {
 	const { educations } = getHomePortfolioSnapshot();
 
 	return (
-		<article className="page">
-			<PageHeader
-				eyebrow="Studies"
-				title="Education"
-				lead="My path through computer science, information systems, and financial technology."
-			/>
+		<SectionLayout
+			eyebrow="Studies"
+			title="Education"
+			lead="My path through computer science, information systems, and financial technology."
+			image="/cards/education.png"
+		>
 			<div className="section">
 				{educations.map((education, index) => (
 					<Education
@@ -30,6 +30,6 @@ export default function EducationPage() {
 					/>
 				))}
 			</div>
-		</article>
+		</SectionLayout>
 	);
 }

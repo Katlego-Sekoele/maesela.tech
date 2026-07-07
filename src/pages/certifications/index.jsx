@@ -1,5 +1,5 @@
 import "../home/styles.css";
-import PageHeader from "../../components/page-header";
+import SectionLayout from "../../components/section-layout";
 import Certification from "../../components/certification";
 import { getHomePortfolioSnapshot } from "../../utils/portfolioHomeSnapshot";
 
@@ -7,12 +7,12 @@ export default function CertificationsPage() {
 	const { certifications } = getHomePortfolioSnapshot();
 
 	return (
-		<article className="page">
-			<PageHeader
-				eyebrow="Credentials"
-				title="Certifications"
-				lead="Professional certifications I've earned."
-			/>
+		<SectionLayout
+			eyebrow="Credentials"
+			title="Certifications"
+			lead="Professional certifications I've earned."
+			image="/cards/certifications.png"
+		>
 			<div className="section">
 				{certifications.map((certification, index) => (
 					<Certification
@@ -26,6 +26,6 @@ export default function CertificationsPage() {
 					/>
 				))}
 			</div>
-		</article>
+		</SectionLayout>
 	);
 }
