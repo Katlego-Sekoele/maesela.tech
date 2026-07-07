@@ -158,11 +158,18 @@ async function run() {
     },
   })
 
-  // ---- Articles + gallery passwords from Redis (optional) ----
+  // ---- Articles + gallery passwords from Redis (optional, best-effort) ----
   if (process.env.REDIS_URL) {
     const { default: Redis } = await import('ioredis')
-    const redis = new Redis(process.env.REDIS_URL, { maxRetriesPerRequest: 3 })
+    const redis = new Redis(process.env.REDIS_URL, {
+      maxRetriesPerRequest: 2,
+      connectTimeout: 8000,
+      retryStrategy: () => null,
+      lazyConnect: true,
+    })
+    redis.on('error', () => {})
     try {
+      await redis.connect()
       const rawArticles = await redis.hgetall('articles')
       await resetCollection(payload, 'articles')
       for (const v of Object.values(rawArticles ?? {})) {
@@ -191,6 +198,12 @@ async function run() {
           },
         })
       }
+      console.log('Imported articles + gallery-passwords from Redis.')
+    } catch (err) {
+      console.warn(
+        'Redis import skipped (unreachable from this environment):',
+        (err as Error).message,
+      )
     } finally {
       redis.disconnect()
     }
