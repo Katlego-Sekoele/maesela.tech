@@ -12,7 +12,10 @@ Vercel**. Images stay on **Vercel Blob**. Certain images can be flagged **sensit
   inside the CMS (Next.js catch-all route handler) for custom endpoints (signed
   photo-proxy, sensitive-image gating, public content feed).
 - **Sensitive images:** shared **gallery password → session** (managed in the CMS);
-  public images render freely. **better-auth** handles **CMS admin** login only.
+  public images render freely.
+- **Admin auth:** **Payload native auth** (bcrypt/sessions/JWT/lockout/reset). The
+  community better-auth↔Payload plugin only supports Payload 3.28, not our stable
+  3.85, so better-auth is deferred until the plugin catches up (tracked follow-up).
 - **Deploy topology:** two Vercel projects. Existing project stays the **frontend**
   (prod domain `maesela.tech`); a **new project** hosts the **CMS** (e.g.
   `cms.maesela.tech`). Previews deployed first; prod promotion only on request.
