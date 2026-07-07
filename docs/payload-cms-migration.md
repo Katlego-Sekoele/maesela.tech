@@ -71,6 +71,39 @@ Mirror `src/data.js` + migrate Redis/Blob data:
    `PAYLOAD_SECRET`, better-auth secret) → preview; then point web at the CMS URL →
    preview. Verify end-to-end. Promote to prod only on request.
 
+## Status (deployed)
+- **CMS** (backend): `https://maesela-cms.vercel.app` — Payload admin at `/admin`,
+  REST/GraphQL, Hono gallery API at `/api/site/*`; Neon Postgres; project
+  `maesela-cms`. Migrations are applied to Neon **locally before deploy**
+  (`node <payload-bin> migrate`), not in the Vercel build.
+- **Web** (frontend preview): `https://maesela-web.vercel.app` — redesigned SPA,
+  content sourced from the CMS at build time; project `maesela-web`. **The live
+  `maesela.tech` project is untouched.**
+- Migrated into Payload/Neon: experiences (8), educations (4), certifications (1),
+  talks (1), projects (10), globals; 58 gallery photos indexed (all `sensitive`).
+
+### Remaining manual steps (owner actions)
+1. **Create the first admin** at `https://maesela-cms.vercel.app/admin` (Payload
+   create-first-user).
+2. **Add a gallery password** (Gallery → Gallery Passwords → set a plaintext
+   `password`) to unlock sensitive photos; flip individual **Photos** to public.
+3. **Articles**: not migrated (this sandbox can't reach `maesela.tech`/Redis).
+   Run from any network that can:
+   `LEGACY_ARTICLES_URL=https://maesela.tech/api/articles DATABASE_URL=<neon> pnpm --filter @maesela/cms exec tsx src/seed/articles.ts`
+   (or re-add in the admin).
+4. **Promote**: when happy, point the `maesela.tech` Vercel project at `apps/web`
+   (Root Directory) + set `VITE_CMS_URL`, and give the CMS a domain
+   (e.g. `cms.maesela.tech`).
+5. **Schema changes**: run `migrate:create` + `migrate` locally against Neon,
+   commit the migration, then deploy.
+
+### Deferred
+- **better-auth**: its Payload plugin targets Payload 3.28, not our 3.85; revisit
+  when it supports 3.85. Admin uses Payload native auth meanwhile.
+- **CMS image uploads via admin**: the Blob store is private, so Payload's upload
+  adapter is unused; gallery photos are indexed as metadata and streamed through
+  the Hono proxy. Make the store public if you want admin uploads.
+
 ## Secret handling (hard rule)
 Never read/print secret values. Use `vercel env pull` only into gitignored files and
 never `cat` them; pipe new secrets via `vercel env add <NAME> <env> < file` or stdin.
