@@ -18,7 +18,7 @@ export const Users: CollectionConfig = {
     create: adminOnly,
     update: adminOnly,
     delete: adminOnly,
-    admin: adminOnly,
+    admin: ({ req }) => Boolean(req.user),
   },
   fields: [
     {
