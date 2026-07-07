@@ -69,6 +69,13 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    experiences: Experience;
+    educations: Education;
+    certifications: Certification;
+    talks: Talk;
+    projects: Project;
+    articles: Article;
+    'gallery-passwords': GalleryPassword;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +85,13 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
+    educations: EducationsSelect<false> | EducationsSelect<true>;
+    certifications: CertificationsSelect<false> | CertificationsSelect<true>;
+    talks: TalksSelect<false> | TalksSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    'gallery-passwords': GalleryPasswordsSelect<false> | GalleryPasswordsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -87,8 +101,16 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'short-bio': ShortBio;
+    about: About;
+    socials: Social;
+  };
+  globalsSelect: {
+    'short-bio': ShortBioSelect<false> | ShortBioSelect<true>;
+    about: AboutSelect<false> | AboutSelect<true>;
+    socials: SocialsSelect<false> | SocialsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -168,6 +190,148 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences".
+ */
+export interface Experience {
+  id: number;
+  company: string;
+  companyLink?: string | null;
+  position?: string | null;
+  startDate: string;
+  /**
+   * Leave empty for a current role.
+   */
+  endDate?: string | null;
+  current?: boolean | null;
+  shown?: boolean | null;
+  description?: string | null;
+  keyPoints?:
+    | {
+        point: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "educations".
+ */
+export interface Education {
+  id: number;
+  company: string;
+  companyLink?: string | null;
+  position?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  graduationDate?: string | null;
+  /**
+   * GPA / percentage. Leave empty for in-progress.
+   */
+  grade?: number | null;
+  current?: boolean | null;
+  shown?: boolean | null;
+  description?: string | null;
+  keyPoints?:
+    | {
+        point: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certifications".
+ */
+export interface Certification {
+  id: number;
+  name: string;
+  detailsLink?: string | null;
+  verificationLink?: string | null;
+  description?: string | null;
+  acquiredDate: string;
+  expiryDate?: string | null;
+  shown?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "talks".
+ */
+export interface Talk {
+  id: number;
+  title: string;
+  link: string;
+  description?: string | null;
+  publishedDate: string;
+  /**
+   * Optional; auto-derived from YouTube link when empty.
+   */
+  thumbnail?: string | null;
+  shown?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: number;
+  name: string;
+  descriptionParagraphs?:
+    | {
+        paragraph: string;
+        id?: string | null;
+      }[]
+    | null;
+  links?:
+    | {
+        name: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  primaryLink?: string | null;
+  /**
+   * Lower numbers appear first.
+   */
+  order?: number | null;
+  shown?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles".
+ */
+export interface Article {
+  id: number;
+  title: string;
+  url: string;
+  description?: string | null;
+  readDate: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery-passwords".
+ */
+export interface GalleryPassword {
+  id: number;
+  label: string;
+  hash: string;
+  revokedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -197,6 +361,34 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'experiences';
+        value: number | Experience;
+      } | null)
+    | ({
+        relationTo: 'educations';
+        value: number | Education;
+      } | null)
+    | ({
+        relationTo: 'certifications';
+        value: number | Certification;
+      } | null)
+    | ({
+        relationTo: 'talks';
+        value: number | Talk;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'articles';
+        value: number | Article;
+      } | null)
+    | ({
+        relationTo: 'gallery-passwords';
+        value: number | GalleryPassword;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -284,6 +476,129 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences_select".
+ */
+export interface ExperiencesSelect<T extends boolean = true> {
+  company?: T;
+  companyLink?: T;
+  position?: T;
+  startDate?: T;
+  endDate?: T;
+  current?: T;
+  shown?: T;
+  description?: T;
+  keyPoints?:
+    | T
+    | {
+        point?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "educations_select".
+ */
+export interface EducationsSelect<T extends boolean = true> {
+  company?: T;
+  companyLink?: T;
+  position?: T;
+  startDate?: T;
+  endDate?: T;
+  graduationDate?: T;
+  grade?: T;
+  current?: T;
+  shown?: T;
+  description?: T;
+  keyPoints?:
+    | T
+    | {
+        point?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certifications_select".
+ */
+export interface CertificationsSelect<T extends boolean = true> {
+  name?: T;
+  detailsLink?: T;
+  verificationLink?: T;
+  description?: T;
+  acquiredDate?: T;
+  expiryDate?: T;
+  shown?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "talks_select".
+ */
+export interface TalksSelect<T extends boolean = true> {
+  title?: T;
+  link?: T;
+  description?: T;
+  publishedDate?: T;
+  thumbnail?: T;
+  shown?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  name?: T;
+  descriptionParagraphs?:
+    | T
+    | {
+        paragraph?: T;
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        name?: T;
+        url?: T;
+        id?: T;
+      };
+  primaryLink?: T;
+  order?: T;
+  shown?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles_select".
+ */
+export interface ArticlesSelect<T extends boolean = true> {
+  title?: T;
+  url?: T;
+  description?: T;
+  readDate?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery-passwords_select".
+ */
+export interface GalleryPasswordsSelect<T extends boolean = true> {
+  label?: T;
+  hash?: T;
+  revokedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -321,6 +636,109 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "short-bio".
+ */
+export interface ShortBio {
+  id: number;
+  bio: string;
+  /**
+   * e.g. "working as a"
+   */
+  currentActivity?: string | null;
+  currentPosition?: string | null;
+  currentCompany?: string | null;
+  interests?:
+    | {
+        interest: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: number;
+  greeting?: string | null;
+  tldr?: string | null;
+  paragraphs?:
+    | {
+        paragraph: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "socials".
+ */
+export interface Social {
+  id: number;
+  linkedin?: string | null;
+  github?: string | null;
+  email?: string | null;
+  spotify?: string | null;
+  instagram?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "short-bio_select".
+ */
+export interface ShortBioSelect<T extends boolean = true> {
+  bio?: T;
+  currentActivity?: T;
+  currentPosition?: T;
+  currentCompany?: T;
+  interests?:
+    | T
+    | {
+        interest?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about_select".
+ */
+export interface AboutSelect<T extends boolean = true> {
+  greeting?: T;
+  tldr?: T;
+  paragraphs?:
+    | T
+    | {
+        paragraph?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "socials_select".
+ */
+export interface SocialsSelect<T extends boolean = true> {
+  linkedin?: T;
+  github?: T;
+  email?: T;
+  spotify?: T;
+  instagram?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
