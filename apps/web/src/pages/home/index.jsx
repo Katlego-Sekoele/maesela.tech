@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import PageHeader from "../../components/page-header";
 import { ShortBio, Socials } from "../../data";
 import { PortfolioExportControls } from "./portfolio-export-controls";
-import { Stagger, Item, itemVariants } from "../../components/motion";
+import { Stagger, Item, ScanReveal, EASE } from "../../components/motion";
 
 const SECTIONS = [
 	{ to: "/experience", kicker: "Work", label: "Experience", blurb: "Where I've built software and what I shipped.", img: "/cards/experience.png" },
@@ -14,6 +14,11 @@ const SECTIONS = [
 	{ to: "/certifications", kicker: "Credentials", label: "Certifications", blurb: "Professional certifications I've earned.", img: "/cards/certifications.png" },
 	{ to: "/talks", kicker: "Speaking", label: "Talks", blurb: "Talks I've given and things I've explained.", img: "/cards/talks.png" },
 ];
+
+const cardItem = {
+	hidden: { opacity: 0 },
+	show: { opacity: 1, transition: { duration: 0.5, ease: EASE } },
+};
 
 function Home() {
 	const interests = ShortBio.current.interests;
@@ -24,50 +29,50 @@ function Home() {
 
 	return (
 		<article className="page page--wide home">
-			<Stagger className="home-lede" stagger={0.09} delayChildren={0.06}>
-				<Item>
-					<PageHeader
-						eyebrow="Maesela Sekoele — Software Engineer"
-						title="I build things with code."
-					/>
-				</Item>
+			<div className="home-lede">
+				<PageHeader
+					eyebrow="Maesela Sekoele — Software Engineer"
+					title="I build things with code."
+				/>
 
-				<Item className="home-intro serif-body">
-					<p>{ShortBio.bio}</p>
-					<p>
-						Currently {ShortBio.current.activity}{" "}
-						<i>
-							{ShortBio.current.position} @ {ShortBio.current.company}
-						</i>
-						.
-					</p>
-					<p>My current obsessions are {interestList}.</p>
-				</Item>
+				<Stagger stagger={0.09} delayChildren={0.5}>
+					<Item className="home-intro serif-body">
+						<p>{ShortBio.bio}</p>
+						<p>
+							Currently {ShortBio.current.activity}{" "}
+							<i>
+								{ShortBio.current.position} @ {ShortBio.current.company}
+							</i>
+							.
+						</p>
+						<p>My current obsessions are {interestList}.</p>
+					</Item>
 
-				<Item as="p" className="text-links">
-					<a className="u-link" href={Socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-					<a className="u-link" href={Socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-					<a className="u-link" href={Socials.email} target="_blank" rel="noopener noreferrer">Email</a>
-					<a className="u-link" href={Socials.spotify} target="_blank" rel="noopener noreferrer">Spotify</a>
-					<a className="u-link" href={Socials.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-				</Item>
+					<Item as="p" className="text-links">
+						<a className="u-link" href={Socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+						<a className="u-link" href={Socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+						<a className="u-link" href={Socials.email} target="_blank" rel="noopener noreferrer">Email</a>
+						<a className="u-link" href={Socials.spotify} target="_blank" rel="noopener noreferrer">Spotify</a>
+						<a className="u-link" href={Socials.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+					</Item>
 
-				<Item>
-					<PortfolioExportControls />
-				</Item>
-			</Stagger>
+					<Item>
+						<PortfolioExportControls />
+					</Item>
+				</Stagger>
+			</div>
 
 			<nav className="home-cards" aria-label="Sections">
 				<p className="eyebrow home-cards__label">Explore</p>
-				<Stagger as="ul" inView className="home-cards__grid" stagger={0.09}>
+				<Stagger as="ul" inView className="home-cards__grid" stagger={0.1}>
 					{SECTIONS.map(({ to, kicker, label, blurb, img }, index) => (
-						<motion.li key={to} className="home-cards__item" variants={itemVariants}>
+						<motion.li key={to} className="home-cards__item" variants={cardItem}>
 							<Link to={to} className="scard">
 								<p className="eyebrow scard__eyebrow">
 									#{index + 1} {kicker}
 								</p>
 								<h2 className="serif scard__title">{label}</h2>
-								<div className="scard__visual">
+								<ScanReveal className="scard__visual" delay={0.05 + index * 0.06}>
 									<img
 										className="scard__img"
 										src={img}
@@ -76,7 +81,7 @@ function Home() {
 										aria-hidden="true"
 									/>
 									<span className="scard__arrow" aria-hidden="true">↗</span>
-								</div>
+								</ScanReveal>
 								<p className="scard__caption">{blurb}</p>
 							</Link>
 						</motion.li>

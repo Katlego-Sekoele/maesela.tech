@@ -1,7 +1,6 @@
 .page-header {
 	margin-bottom: 2.5rem;
 	padding-bottom: var(--spacing-large);
-	border-bottom: 1px solid hsl(var(--border));
 }
 
 .page-header__eyebrow {
@@ -13,6 +12,25 @@
 	line-height: 1.02;
 	letter-spacing: -0.02em;
 	margin: 0;
+}
+
+/* Masthead word reveal: each word rises from behind this clip line. */
+.page-header__title .word-mask {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+	padding-bottom: 0.06em;
+}
+.page-header__title .word {
+	display: inline-block;
+	white-space: pre;
+}
+
+/* Hairline that draws in under the title. */
+.page-header__rule {
+	height: 1px;
+	background: hsl(var(--border));
+	margin-top: var(--spacing-large);
 }
 
 .page-header__lead {

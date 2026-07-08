@@ -53,11 +53,24 @@
 	line-height: 1.5;
 	color: hsl(var(--muted));
 	text-transform: lowercase;
-	transition: color var(--transition-duration) var(--transition-easing);
+	/* underline that draws in from the left on hover */
+	background-image: linear-gradient(hsl(var(--secondary)), hsl(var(--secondary)));
+	background-repeat: no-repeat;
+	background-position: 0 92%;
+	background-size: 0% 1px;
+	transition: color var(--transition-duration) var(--transition-easing),
+		background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-link:hover {
 	color: hsl(var(--secondary)) !important;
+	background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.nav-link {
+		transition: none;
+	}
 }
 
 /* Active route: upright + bold, primary colour */

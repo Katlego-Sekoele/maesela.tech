@@ -78,7 +78,70 @@ export function Item({ children, className, as = "div", ...rest }) {
 	);
 }
 
+/**
+ * Editorial masthead reveal: each word rises from behind a clipping line,
+ * lightly staggered. Use inside a heading element.
+ */
+export function WordReveal({ text, delay = 0, stagger = 0.055, duration = 0.7 }) {
+	const reduce = useReducedMotion();
+	if (reduce) return text;
+	const words = String(text).split(" ");
+	return words.map((word, i) => (
+		<span className="word-mask" key={`${word}-${i}`}>
+			<motion.span
+				className="word"
+				initial={{ y: "115%" }}
+				animate={{ y: 0 }}
+				transition={{ duration, ease: EASE, delay: delay + i * stagger }}
+			>
+				{word}
+				{i < words.length - 1 ? " " : ""}
+			</motion.span>
+		</span>
+	));
+}
+
+/**
+ * Reveals an image/panel with a top-to-bottom clip wipe — a "scan pass" that
+ * suits the dithered duotone artwork. Fires once when scrolled into view.
+ */
+export function ScanReveal({ children, className, delay = 0, duration = 0.85, ...rest }) {
+	const reduce = useReducedMotion();
+	if (reduce) return <div className={className}>{children}</div>;
+	return (
+		<motion.div
+			className={className}
+			initial={{ clipPath: "inset(0 0 100% 0)" }}
+			whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+			viewport={{ once: true, margin: "-12% 0px" }}
+			transition={{ duration, ease: EASE, delay }}
+			{...rest}
+		>
+			{children}
+		</motion.div>
+	);
+}
+
+/** A hairline rule that draws in from the left when revealed. */
+export function DrawRule({ className, delay = 0, duration = 0.7 }) {
+	const reduce = useReducedMotion();
+	if (reduce) return <div className={className} />;
+	return (
+		<motion.div
+			className={className}
+			style={{ transformOrigin: "left" }}
+			initial={{ scaleX: 0 }}
+			whileInView={{ scaleX: 1 }}
+			viewport={{ once: true }}
+			transition={{ duration, ease: EASE, delay }}
+		/>
+	);
+}
+
 const nodeType = { children: PropTypes.node, className: PropTypes.string };
+WordReveal.propTypes = { text: PropTypes.string, delay: PropTypes.number, stagger: PropTypes.number, duration: PropTypes.number };
+ScanReveal.propTypes = { ...nodeType, delay: PropTypes.number, duration: PropTypes.number };
+DrawRule.propTypes = { className: PropTypes.string, delay: PropTypes.number, duration: PropTypes.number };
 Reveal.propTypes = { ...nodeType, delay: PropTypes.number, y: PropTypes.number, duration: PropTypes.number };
 Stagger.propTypes = { ...nodeType, as: PropTypes.string, inView: PropTypes.bool, stagger: PropTypes.number, delayChildren: PropTypes.number };
 Item.propTypes = { ...nodeType, as: PropTypes.string };

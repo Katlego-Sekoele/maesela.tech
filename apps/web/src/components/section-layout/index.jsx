@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import PageHeader from "../page-header";
+import { ScanReveal } from "../motion";
 import "./styles.css";
 
 /**
@@ -16,7 +17,7 @@ const SectionLayout = ({ eyebrow, title, lead, image, children }) => {
 			</div>
 			{image && (
 				<aside className="section-page__aside">
-					<div className="section-aside">
+					<ScanReveal className="section-aside" delay={0.15}>
 						<img
 							className="section-aside__img"
 							src={image}
@@ -24,7 +25,7 @@ const SectionLayout = ({ eyebrow, title, lead, image, children }) => {
 							loading="lazy"
 							aria-hidden="true"
 						/>
-					</div>
+					</ScanReveal>
 				</aside>
 			)}
 		</article>
