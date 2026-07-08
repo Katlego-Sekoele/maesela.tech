@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Reveal } from "../motion";
 import "./styles.css";
 
 const Education = ({
@@ -23,7 +24,7 @@ const Education = ({
 			: `Graduating ${graduationDateString}`;
 
 	return (
-		<div className="education-container">
+		<Reveal className="education-container">
 			<div className="item-header">
 				<a
 					className="item-link"
@@ -60,7 +61,7 @@ const Education = ({
 					</ul>
 				) : null}
 			</div>
-		</div>
+		</Reveal>
 	);
 };
 

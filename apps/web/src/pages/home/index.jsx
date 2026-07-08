@@ -1,9 +1,11 @@
 import "../../App.css";
 import "./styles.css";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import PageHeader from "../../components/page-header";
 import { ShortBio, Socials } from "../../data";
 import { PortfolioExportControls } from "./portfolio-export-controls";
+import { Stagger, Item, itemVariants } from "../../components/motion";
 
 const SECTIONS = [
 	{ to: "/experience", kicker: "Work", label: "Experience", blurb: "Where I've built software and what I shipped.", img: "/cards/experience.png" },
@@ -22,40 +24,44 @@ function Home() {
 
 	return (
 		<article className="page page--wide home">
-			<div className="home-lede">
-			<PageHeader
-				eyebrow="Maesela Sekoele — Software Engineer"
-				title="I build things with code."
-			/>
+			<Stagger className="home-lede" stagger={0.09} delayChildren={0.06}>
+				<Item>
+					<PageHeader
+						eyebrow="Maesela Sekoele — Software Engineer"
+						title="I build things with code."
+					/>
+				</Item>
 
-			<div className="home-intro serif-body">
-				<p>{ShortBio.bio}</p>
-				<p>
-					Currently {ShortBio.current.activity}{" "}
-					<i>
-						{ShortBio.current.position} @ {ShortBio.current.company}
-					</i>
-					.
-				</p>
-				<p>My current obsessions are {interestList}.</p>
-			</div>
+				<Item className="home-intro serif-body">
+					<p>{ShortBio.bio}</p>
+					<p>
+						Currently {ShortBio.current.activity}{" "}
+						<i>
+							{ShortBio.current.position} @ {ShortBio.current.company}
+						</i>
+						.
+					</p>
+					<p>My current obsessions are {interestList}.</p>
+				</Item>
 
-			<p className="text-links">
-				<a className="u-link" href={Socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-				<a className="u-link" href={Socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-				<a className="u-link" href={Socials.email} target="_blank" rel="noopener noreferrer">Email</a>
-				<a className="u-link" href={Socials.spotify} target="_blank" rel="noopener noreferrer">Spotify</a>
-				<a className="u-link" href={Socials.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-			</p>
+				<Item as="p" className="text-links">
+					<a className="u-link" href={Socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+					<a className="u-link" href={Socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+					<a className="u-link" href={Socials.email} target="_blank" rel="noopener noreferrer">Email</a>
+					<a className="u-link" href={Socials.spotify} target="_blank" rel="noopener noreferrer">Spotify</a>
+					<a className="u-link" href={Socials.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+				</Item>
 
-			<PortfolioExportControls />
-			</div>
+				<Item>
+					<PortfolioExportControls />
+				</Item>
+			</Stagger>
 
 			<nav className="home-cards" aria-label="Sections">
 				<p className="eyebrow home-cards__label">Explore</p>
-				<ul className="home-cards__grid">
+				<Stagger as="ul" inView className="home-cards__grid" stagger={0.09}>
 					{SECTIONS.map(({ to, kicker, label, blurb, img }, index) => (
-						<li key={to} className="home-cards__item">
+						<motion.li key={to} className="home-cards__item" variants={itemVariants}>
 							<Link to={to} className="scard">
 								<p className="eyebrow scard__eyebrow">
 									#{index + 1} {kicker}
@@ -73,9 +79,9 @@ function Home() {
 								</div>
 								<p className="scard__caption">{blurb}</p>
 							</Link>
-						</li>
+						</motion.li>
 					))}
-				</ul>
+				</Stagger>
 			</nav>
 		</article>
 	);

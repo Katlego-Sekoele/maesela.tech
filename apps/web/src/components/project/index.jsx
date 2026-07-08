@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
+import { Reveal } from "../motion";
 import "./styles.css";
 
 const Project = ({ name, descriptionParagraphs, links, primaryLink }) => {
 	return (
-		<div className="project-container">
+		<Reveal className="project-container">
 			<div className="item-header">
 				{primaryLink ? (
 					<a
@@ -40,7 +41,7 @@ const Project = ({ name, descriptionParagraphs, links, primaryLink }) => {
 					))}
 				</div>
 			)}
-		</div>
+		</Reveal>
 	);
 };
 

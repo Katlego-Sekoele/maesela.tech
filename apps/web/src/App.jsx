@@ -1,8 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import "./App.css";
 import Header from "./components/header";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { EASE } from "./components/motion";
 
 const Home = lazy(() => import("./pages/home"));
 const ExperiencePage = lazy(() => import("./pages/experience"));
@@ -22,26 +24,41 @@ const App = () => {
 			<div className="App">
 				<Header />
 				<main className="page-content">
-					<Suspense fallback={<div className="route-fallback" aria-hidden="true" />}>
-						<Routes>
-							<Route path="/" element={<Home />} index />
-							<Route path="/experience" element={<ExperiencePage />} />
-							<Route path="/education" element={<EducationPage />} />
-							<Route path="/projects" element={<ProjectsPage />} />
-							<Route path="/certifications" element={<CertificationsPage />} />
-							<Route path="/talks" element={<TalksPage />} />
-							<Route path="/about" element={<About />} />
-							<Route path="/etc" element={<ETC />} />
-							<Route path="/admin" element={<Admin />} />
-							<Route path="redirect/tinkr" element={<Tinkr />} />
-							<Route path="*" element={<Construction />} />
-						</Routes>
-					</Suspense>
+					<AnimatedRoutes />
 				</main>
 			</div>
 		</ThemeProvider>
 	);
 };
+
+function AnimatedRoutes() {
+	const location = useLocation();
+	const reduce = useReducedMotion();
+	return (
+		<motion.div
+			key={location.pathname}
+			initial={reduce ? false : { opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 0.35, ease: EASE }}
+		>
+			<Suspense fallback={<div className="route-fallback" aria-hidden="true" />}>
+				<Routes location={location}>
+					<Route path="/" element={<Home />} index />
+					<Route path="/experience" element={<ExperiencePage />} />
+					<Route path="/education" element={<EducationPage />} />
+					<Route path="/projects" element={<ProjectsPage />} />
+					<Route path="/certifications" element={<CertificationsPage />} />
+					<Route path="/talks" element={<TalksPage />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/etc" element={<ETC />} />
+					<Route path="/admin" element={<Admin />} />
+					<Route path="redirect/tinkr" element={<Tinkr />} />
+					<Route path="*" element={<Construction />} />
+				</Routes>
+			</Suspense>
+		</motion.div>
+	);
+}
 
 function Tinkr() {
 	useEffect(() => {

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Reveal } from "../motion";
 import "./styles.css";
 
 const Video = ({ title, link, description, publishedDate, thumbnail }) => {
@@ -23,7 +24,7 @@ const Video = ({ title, link, description, publishedDate, thumbnail }) => {
 	const thumbnailUrl = thumbnail || getYouTubeThumbnail(link);
 
 	return (
-		<div>
+		<Reveal>
 			<div className="item-header video-header">
 				<a
 					className="item-link video-title-link"
@@ -65,7 +66,7 @@ const Video = ({ title, link, description, publishedDate, thumbnail }) => {
 					)}
 				</>
 			)}
-		</div>
+		</Reveal>
 	);
 };
 
@@ -78,4 +79,3 @@ Video.propTypes = {
 };
 
 export default Video;
-

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Reveal } from "../motion";
 import "./styles.css";
 
 const Certification = ({
@@ -21,7 +22,7 @@ const Certification = ({
 		: null;
 
 	return (
-		<div className="certification-container">
+		<Reveal className="certification-container">
 			<div className="item-header certification-header">
 				<div className="certification-links">
 					<a
@@ -55,7 +56,7 @@ const Certification = ({
 					{description}
 				</div>
 			)}
-		</div>
+		</Reveal>
 	);
 };
 
