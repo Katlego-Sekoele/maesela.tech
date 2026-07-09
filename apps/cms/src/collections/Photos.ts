@@ -14,10 +14,22 @@ export const Photos: CollectionConfig = {
   access: { read: adminOnly, create: adminOnly, update: adminOnly, delete: adminOnly },
   admin: {
     useAsTitle: 'alt',
-    defaultColumns: ['alt', 'sensitive', 'pathname'],
+    defaultColumns: ['preview', 'alt', 'sensitive', 'pathname'],
     group: 'Gallery',
   },
   fields: [
+    {
+      name: 'preview',
+      type: 'ui',
+      label: 'Preview',
+      admin: {
+        components: {
+          // Thumbnail in the list view + full preview in the edit view.
+          Cell: '@/components/PhotoThumb#PhotoThumbCell',
+          Field: '@/components/PhotoThumb#PhotoPreviewField',
+        },
+      },
+    },
     {
       name: 'pathname',
       type: 'text',

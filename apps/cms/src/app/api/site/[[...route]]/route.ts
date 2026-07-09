@@ -121,7 +121,19 @@ app.get('/photo', async (c) => {
     return c.json({ error: 'not found' }, 404)
   }
   if (!photo?.pathname) return c.json({ error: 'not found' }, 404)
-  if (photo.sensitive && !(await hasSession(c))) return c.json({ error: 'Unauthorized' }, 401)
+  if (photo.sensitive) {
+    let allowed = await hasSession(c)
+    if (!allowed) {
+      // Logged-in CMS admins may preview any photo (used by the admin thumbnails).
+      try {
+        const { user } = await payload.auth({ headers: c.req.raw.headers })
+        allowed = Boolean(user)
+      } catch {
+        /* not an admin */
+      }
+    }
+    if (!allowed) return c.json({ error: 'Unauthorized' }, 401)
+  }
 
   const token = process.env.BLOB_READ_WRITE_TOKEN
   let blobUrl: string
