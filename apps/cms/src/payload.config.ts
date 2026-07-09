@@ -48,6 +48,9 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || '',
+      // Keep per-instance connections low; runtime uses Neon's pooled endpoint
+      // so many concurrent serverless invocations don't exhaust Postgres.
+      max: Number(process.env.DB_POOL_MAX || 4),
     },
   }),
   sharp,

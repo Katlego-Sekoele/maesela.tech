@@ -16,6 +16,8 @@ export const Photos: CollectionConfig = {
     useAsTitle: 'alt',
     defaultColumns: ['preview', 'alt', 'sensitive', 'pathname'],
     group: 'Gallery',
+    // Fewer thumbnails per page → fewer concurrent proxy/DB hits.
+    pagination: { defaultLimit: 12, limits: [12, 24, 48] },
   },
   fields: [
     {
