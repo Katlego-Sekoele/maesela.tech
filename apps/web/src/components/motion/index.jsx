@@ -103,17 +103,22 @@ export function WordReveal({ text, delay = 0, stagger = 0.055, duration = 0.7 })
 
 /**
  * Reveals an image/panel with a top-to-bottom clip wipe — a "scan pass" that
- * suits the dithered duotone artwork. Fires once when scrolled into view.
+ * suits the dithered duotone artwork. By default fires once when scrolled into
+ * view; set `onMount` for elements that may sit in sticky/edge positions where
+ * in-view detection is unreliable (fail-safe: always reveals).
  */
-export function ScanReveal({ children, className, delay = 0, duration = 0.85, ...rest }) {
+export function ScanReveal({ children, className, delay = 0, duration = 0.85, onMount = false, ...rest }) {
 	const reduce = useReducedMotion();
 	if (reduce) return <div className={className}>{children}</div>;
+	const reveal = { clipPath: "inset(0 0 0% 0)" };
+	const trigger = onMount
+		? { animate: reveal }
+		: { whileInView: reveal, viewport: { once: true, margin: "-12% 0px" } };
 	return (
 		<motion.div
 			className={className}
 			initial={{ clipPath: "inset(0 0 100% 0)" }}
-			whileInView={{ clipPath: "inset(0 0 0% 0)" }}
-			viewport={{ once: true, margin: "-12% 0px" }}
+			{...trigger}
 			transition={{ duration, ease: EASE, delay }}
 			{...rest}
 		>
@@ -140,7 +145,7 @@ export function DrawRule({ className, delay = 0, duration = 0.7 }) {
 
 const nodeType = { children: PropTypes.node, className: PropTypes.string };
 WordReveal.propTypes = { text: PropTypes.string, delay: PropTypes.number, stagger: PropTypes.number, duration: PropTypes.number };
-ScanReveal.propTypes = { ...nodeType, delay: PropTypes.number, duration: PropTypes.number };
+ScanReveal.propTypes = { ...nodeType, delay: PropTypes.number, duration: PropTypes.number, onMount: PropTypes.bool };
 DrawRule.propTypes = { className: PropTypes.string, delay: PropTypes.number, duration: PropTypes.number };
 Reveal.propTypes = { ...nodeType, delay: PropTypes.number, y: PropTypes.number, duration: PropTypes.number };
 Stagger.propTypes = { ...nodeType, as: PropTypes.string, inView: PropTypes.bool, stagger: PropTypes.number, delayChildren: PropTypes.number };

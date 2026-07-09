@@ -17,7 +17,7 @@ const SectionLayout = ({ eyebrow, title, lead, image, children }) => {
 			</div>
 			{image && (
 				<aside className="section-page__aside">
-					<ScanReveal className="section-aside" delay={0.15}>
+					<ScanReveal className="section-aside" onMount delay={0.15}>
 						<img
 							className="section-aside__img"
 							src={image}
