@@ -1,6 +1,7 @@
 import * as migration_20260707_063327_init from './20260707_063327_init';
 import * as migration_20260707_070011_gallery_password from './20260707_070011_gallery_password';
 import * as migration_20260707_073000_photos_collection from './20260707_073000_photos_collection';
+import * as migration_20260714_000000_about_portrait from './20260714_000000_about_portrait';
 
 export const migrations = [
   {
@@ -17,5 +18,10 @@ export const migrations = [
     up: migration_20260707_073000_photos_collection.up,
     down: migration_20260707_073000_photos_collection.down,
     name: '20260707_073000_photos_collection'
+  },
+  {
+    up: migration_20260714_000000_about_portrait.up,
+    down: migration_20260714_000000_about_portrait.down,
+    name: '20260714_000000_about_portrait'
   },
 ];

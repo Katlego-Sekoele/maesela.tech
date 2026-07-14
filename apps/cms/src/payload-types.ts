@@ -666,9 +666,9 @@ export interface About {
       }[]
     | null;
   /**
-   * Portrait shown on the About page. Pick an existing photo (upload new ones from Gallery → Photos). Automatically made public when selected here.
+   * Photo to use as the About-page portrait. Upload/find it in Gallery → Photos, then paste its ID here (visible in that photo's edit URL, e.g. /admin/collections/photos/258 → 258). Automatically made public when set.
    */
-  portrait?: (number | null) | Photo;
+  portraitId?: string | null;
   /**
    * Alt text for the portrait image.
    */
@@ -722,7 +722,7 @@ export interface AboutSelect<T extends boolean = true> {
         paragraph?: T;
         id?: T;
       };
-  portrait?: T;
+  portraitId?: T;
   portraitAlt?: T;
   updatedAt?: T;
   createdAt?: T;
