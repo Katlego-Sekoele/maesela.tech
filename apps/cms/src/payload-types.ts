@@ -665,6 +665,14 @@ export interface About {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Portrait shown on the About page. Pick an existing photo (upload new ones from Gallery → Photos). Automatically made public when selected here.
+   */
+  portrait?: (number | null) | Photo;
+  /**
+   * Alt text for the portrait image.
+   */
+  portraitAlt?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -714,6 +722,8 @@ export interface AboutSelect<T extends boolean = true> {
         paragraph?: T;
         id?: T;
       };
+  portrait?: T;
+  portraitAlt?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

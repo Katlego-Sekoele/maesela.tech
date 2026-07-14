@@ -18,6 +18,9 @@ export const Photos: CollectionConfig = {
     group: 'Gallery',
     // Fewer thumbnails per page → fewer concurrent proxy/DB hits.
     pagination: { defaultLimit: 12, limits: [12, 24, 48] },
+    components: {
+      beforeListTable: ['@/components/PhotoUploader#PhotoUploader'],
+    },
   },
   fields: [
     {

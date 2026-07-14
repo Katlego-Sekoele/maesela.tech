@@ -93,4 +93,6 @@ export const About = {
 	greeting: content.about?.greeting ?? "",
 	tldr: content.about?.tldr ?? "",
 	paragraphs: content.about?.paragraphs ?? [],
+	portraitId: content.about?.portraitId ?? null,
+	portraitAlt: content.about?.portraitAlt ?? "",
 };

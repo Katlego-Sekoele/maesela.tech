@@ -4,7 +4,7 @@ import { getCookie, setCookie } from 'hono/cookie'
 import { cors } from 'hono/cors'
 import bcrypt from 'bcryptjs'
 import sharp from 'sharp'
-import { head } from '@vercel/blob'
+import { head, put } from '@vercel/blob'
 import { getPayload, type Where } from 'payload'
 import config from '@payload-config'
 import { GALLERY_COOKIE, signGallerySession, verifyGallerySession } from '@/lib/gallery'
@@ -70,6 +70,52 @@ app.post('/gallery/auth', async (c) => {
     }
   }
   return c.json({ error: 'Invalid password' }, 401)
+})
+
+// ---- Admin photo upload (used by the Photos list dropzone in the admin) ----
+app.post('/admin/photos', async (c) => {
+  const payload = await getPayloadClient()
+  let isAdmin = false
+  try {
+    const { user } = await payload.auth({ headers: c.req.raw.headers })
+    isAdmin = Boolean(user)
+  } catch {
+    /* not an admin */
+  }
+  if (!isAdmin) return c.json({ error: 'Unauthorized' }, 401)
+
+  const token = process.env.BLOB_READ_WRITE_TOKEN
+  if (!token) return c.json({ error: 'Blob not configured' }, 500)
+
+  const form = await c.req.formData().catch(() => null)
+  const file = form?.get('file')
+  if (!(file instanceof File)) return c.json({ error: 'file required' }, 400)
+
+  const altRaw = form?.get('alt')
+  const alt =
+    typeof altRaw === 'string' && altRaw.trim()
+      ? altRaw.trim()
+      : file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')
+  const sensitive = form?.get('sensitive') !== 'false'
+
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
+  const pathname = `uploads/${Date.now()}-${safeName}`
+  const buffer = Buffer.from(await file.arrayBuffer())
+
+  await put(pathname, buffer, {
+    access: 'private',
+    addRandomSuffix: false,
+    contentType: file.type || 'application/octet-stream',
+    token,
+  })
+
+  const doc = await payload.create({
+    collection: 'photos',
+    data: { pathname, alt, sensitive },
+    overrideAccess: true,
+  })
+
+  return c.json({ photo: doc })
 })
 
 // ---- Photo listing (public always; sensitive only with a session) ----

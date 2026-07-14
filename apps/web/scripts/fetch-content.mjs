@@ -111,6 +111,10 @@ async function main() {
       greeting: about.greeting ?? '',
       tldr: about.tldr ?? '',
       paragraphs: strip(about.paragraphs, 'paragraph'),
+      // depth=0, so `portraitId` is the raw stored value (no population attempt
+      // against the admin-only `photos` collection, which would otherwise hide it).
+      portraitId: about.portraitId || null,
+      portraitAlt: about.portraitAlt || '',
     },
     socials: {
       linkedin: socials.linkedin ?? '',
